@@ -1,0 +1,2 @@
+# iDreck
+the triangle calculator
