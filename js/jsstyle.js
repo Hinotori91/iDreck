@@ -25,11 +25,12 @@ let ergebnis = document.querySelector("#ergebnis");
 ///////////////////////////////////////////////////////////
 // Funktion zum Div erstellen
 const createDiv = (string,text) => {
-  var div = document.createElement("div");
+  // var div = document.createElement("div");
   var p = document.createElement("p");
   p.textContent = string + text;
-  div.appendChild(p);
-  document.body.appendChild(div);
+  // div.appendChild(p);
+  // document.body.appendChild(div);
+  ergebnis.appendChild(p);
 }
 ///////////////////////////////////////////////////////////
 // Variablen

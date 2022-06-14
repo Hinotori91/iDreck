@@ -10,6 +10,12 @@ body {
   background: rgb(208, 206, 255);
 }
 
+#eingaben-ergebnis {
+  display: flex;
+  margin: 10px;
+  box-shadow: rgba(13, 0, 255, 0.5) 0px 2px 20px;
+}
+
 #heading {
   background:rgb(50, 50, 50);
   border-radius: 10px;
@@ -17,36 +23,35 @@ body {
   padding: 20px;
   color: rgb(208, 206, 255);
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 }
 
-p {
-  margin: 10px 0 0 20px;
-}
-
-h1 {
-  margin-bottom: 10px;
+#ergebnis {
+  background: rgb(50, 50, 50);
+  border-radius: 10px;
+  /* margin: 0 10px; */
+  padding: 20px;
   color: rgb(208, 206, 255);
-}
-
-h3 {
-  margin-bottom: 10px;
-  color: rgb(208, 206, 255);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  width: 40%;
 }
 
 #eingaben {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 0 10px 0 0;
   padding: 20px;
   background-color: rgb(50, 50, 50);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  width: 60%;
 }
 
 #eingabenInput {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-evenly; */
+  margin: 10px auto 0 20px;
 }
 
 section {
@@ -66,4 +71,19 @@ input {
 
 .seite, .winkel {
   width: 210px;
+}
+
+p {
+  margin: 10px 0 0 20px;
+}
+
+h1 {
+  margin-bottom: 10px;
+  color: rgb(208, 206, 255);
+}
+
+h3 {
+  margin-bottom: 10px;
+  color: rgb(208, 206, 255);
+  text-align: center;
 }
