@@ -24,10 +24,10 @@ let ergebnis = document.querySelector("#ergebnis");
 
 ///////////////////////////////////////////////////////////
 // Funktion zum Div erstellen
-const createDiv = (string,wauwau) => {
+const createDiv = (string,text) => {
   var div = document.createElement("div");
   var p = document.createElement("p");
-  p.textContent = string + wauwau;
+  p.textContent = string + text;
   div.appendChild(p);
   document.body.appendChild(div);
 }

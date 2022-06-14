@@ -6,7 +6,17 @@
 }
 
 body {
-  background: rgb(223, 223, 223);
+  /* background: rgb(223, 223, 223); */
+  background: rgb(208, 206, 255);
+}
+
+#heading {
+  background:rgb(50, 50, 50);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
+  color: rgb(208, 206, 255);
+  text-align: center;
 }
 
 p {
@@ -26,7 +36,7 @@ h3 {
 #eingaben {
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  margin: 10px;
   padding: 20px;
   background-color: rgb(50, 50, 50);
   border-radius: 10px;
