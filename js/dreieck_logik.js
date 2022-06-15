@@ -21,16 +21,10 @@ let ausgabe_beta = document.querySelector("#ausgabeBeta");
 let ausgabe_gamma = document.querySelector("#ausgabeGamma");
 
 let ausgabe_umfang = document.querySelector("#ausgabeUmfang");
+let ausgabe_flächeninhalt = document.querySelector("#ausgabeFläche");
+let ausgabe_Seitenhalbe_C = document.querySelector("#ausgabeSeitenhalbeC");
 
-///////////////////////////////////////////////////////////
-// Funktion zum Div erstellen
-// const createDiv = (string) => {
-//   var p = document.createElement("p");
-//   p.textContent = string;
-//   p.classList.add("ausgabe")
-//   ergebnis.appendChild(p);
-// }
-///////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 // Variablen Seiten
 let a = 0;
@@ -62,11 +56,8 @@ if (gamma1 !=''){
   gamma_winkel = parseInt(gamma1);
 };
 
-console.log("Seite A " + a);
 ausgabe_a.textContent = "Seite A = " + a;
-console.log("Seite B " + b);
 ausgabe_b.textContent = "Seite B = " + b;
-console.log("Seite C " + c);
 ausgabe_c.textContent = "Seite C = " + c;
 
 console.log("Alpha " + alpha_winkel);
@@ -85,9 +76,9 @@ button.addEventListener('click', ()=>{
     sss_Umfang(a,b,c);
     sss_Winkel_berechnen(a,b,c);
   }
+  flächeninhalt(a,b,alpha_rad,beta_rad);
+  seiten_höhe(a,b,alpha_rad,beta_rad);
 });
-
-
 
 
 
@@ -105,7 +96,7 @@ function sss_Winkel_berechnen (a,b,c){
   beta_rad = Math.acos((0.5* Math.pow(a,2) - 0.5* Math.pow(b,2) + 0.5* Math.pow(c,2)) / (a*c));
   beta_winkel = beta_rad * 180 / Math.PI;
 
-  // ÜBERARBEITUNG NÖTIG!!!
+  // ÜBERARBEITUNG NÖTIG!!! NICHT RICHTIG GLAUBE ICH!!!
   // gamma_winkel = Math.acos(Math.pow(c,2)-Math.pow(b,2)-Math.pow(a,2)/-2*a*b);
   gamma_winkel = -beta_winkel-alpha_winkel+180;
   
@@ -114,17 +105,26 @@ function sss_Winkel_berechnen (a,b,c){
   ausgabe_gamma.textContent = "γ "+ gamma_winkel+"°"
 }
 
-function winkelAlpha (){
+// function winkelAlpha (){
 
-}
-function winkelBeta(){
+// }
+// function winkelBeta(){
 
-}
-function winkelGamma(){
+// }
+// function winkelGamma(){
 
-}
+// }
 
-function flächeninhalt(){
+function flächeninhalt(a,b,alpha_rad,beta_rad){
+  if(a!=""){
+    flächeninhalt = a*Math.sin(beta_rad);
+    ausgabe_flächeninhalt.textContent = "A = "+flächeninhalt;
+  }else if(b!=""){
+    flächeninhalt = b*Math.sin(alpha_rad);
+  }else if(a!="" && b!=""){
+    flächeninhalt = a*Math.sin(beta_rad);
+    ausgabe_flächeninhalt.textContent = "A = "+flächeninhalt;
+  };
 // A=1/2a*ha
 // A=1/2b*hb
 // A=1/2c*hc
@@ -133,6 +133,18 @@ function flächeninhalt(){
 // Höhe a (ha)
 // Höhe b (hb)
 // Höhe c (hc)
+function seiten_höhe (a,b,alpha_rad,beta_rad){
+  if(a!=""){
+    höhe_C = a*sin(beta_rad);
+    ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
+  }else if(b!=""){
+    höhe_C = b*sin(alpha_rad);
+    ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
+  }else if(a!="" && b!=""){
+    höhe_C = a*sin(beta_rad);
+    ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
+  };
+}
 // Umkreisradius
 // Inkreisradius
 // Seitenhalbierende a (sa)
