@@ -7,26 +7,30 @@
 
 body {
   background: rgb(208, 206, 255);
+  width: 100%;
 }
 
 #heading {
+  /* width: 50vw; */
+  width: 60rem;
   border-radius: 10px;
-  margin: 20px 25px 10px;
   padding: 20px;
-  text-align: center;
+  /* margin: 20px 25px 10px; */
+  margin: 20px auto 10px;
   background:rgb(50, 50, 50);
   color: rgb(208, 206, 255);
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  text-align: center;
 }
 
 #eingaben-ergebnis {
   display: flex;
-  margin: 10px;
-  padding: 0 15px 15px;
+  margin-top: 15px;
+  justify-content: center;
 }
 
 #ergebnis {
-  width: 45%;
+  width: 30rem;
   padding: 20px;
   border-radius: 10px;
   background: rgb(50, 50, 50);
@@ -37,8 +41,8 @@ body {
 #eingaben {
   display: flex;
   flex-direction: column;
-  width: 55%;
-  margin: 0 10px 0 0;
+  width: 29rem;
+  margin-right: 15px;
   padding: 20px;
   border-radius: 10px;
   background-color: rgb(50, 50, 50);
