@@ -11,11 +11,9 @@ body {
 }
 
 #heading {
-  /* width: 50vw; */
-  width: 60rem;
+  width: 80rem;
   border-radius: 10px;
   padding: 20px;
-  /* margin: 20px 25px 10px; */
   margin: 20px auto 10px;
   background:rgb(50, 50, 50);
   color: rgb(208, 206, 255);
@@ -81,4 +79,10 @@ h3 {
 
 p {
   margin: 10px 0 0 20px;
+}
+
+#canvas {
+  border: 3px solid rgb(50, 50, 50);
+  border-radius: 10px;
+  margin-left: 15px;
 }
