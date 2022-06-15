@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Titillium+Web:wght@300&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -44,9 +46,6 @@ body {
   grid-column: 1;
   justify-items: center;
 }
-.ausgabe{
-  grid-column: 2;
-}
 
 #eingaben {
   display: flex;
@@ -57,6 +56,11 @@ body {
   border-radius: 10px;
   background-color: rgb(50, 50, 50);
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
+
+.ausgabe{
+  /* font-family: 'Titillium Web', sans-serif; */
+  font-family: 'Kdam Thmor Pro', sans-serif;
 }
 
 #eingabenInput {

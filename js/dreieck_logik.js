@@ -12,14 +12,24 @@ let ergebnis = document.querySelector("#ergebnis");
 
 let button = document.querySelector("#bttn");
 
+let ausgabe_a = document.querySelector("#ausgabea");
+let ausgabe_b = document.querySelector("#ausgabeb");
+let ausgabe_c = document.querySelector("#ausgabec");
+
+let ausgabe_alpha = document.querySelector("#ausgabeAlpha");
+let ausgabe_beta = document.querySelector("#ausgabeBeta");
+let ausgabe_gamma = document.querySelector("#ausgabeGamma");
+
+let ausgabe_umfang = document.querySelector("#ausgabeUmfang");
+
 ///////////////////////////////////////////////////////////
 // Funktion zum Div erstellen
-const createDiv = (string) => {
-  var p = document.createElement("p");
-  p.textContent = string;
-  p.classList.add("ausgabe")
-  ergebnis.appendChild(p);
-}
+// const createDiv = (string) => {
+//   var p = document.createElement("p");
+//   p.textContent = string;
+//   p.classList.add("ausgabe")
+//   ergebnis.appendChild(p);
+// }
 ///////////////////////////////////////////////////////////
 
 // Variablen Seiten
@@ -53,8 +63,11 @@ if (gamma1 !=''){
 };
 
 console.log("Seite A " + a);
+ausgabe_a.textContent = "Seite A = " + a;
 console.log("Seite B " + b);
+ausgabe_b.textContent = "Seite B = " + b;
 console.log("Seite C " + c);
+ausgabe_c.textContent = "Seite C = " + c;
 
 console.log("Alpha " + alpha_winkel);
 console.log("Beta " + beta_winkel);
@@ -74,11 +87,15 @@ button.addEventListener('click', ()=>{
   }
 });
 
-//Funktion
+
+
+
+
+//Funktionen
 
 function sss_Umfang (a,b,c){
   umfang = a+b+c;
-  createDiv("Umfang = "+umfang+" cm");
+  ausgabe_umfang.textContent = "U = "+umfang+"cm";
 }
 
 function sss_Winkel_berechnen (a,b,c){
@@ -92,9 +109,9 @@ function sss_Winkel_berechnen (a,b,c){
   // gamma_winkel = Math.acos(Math.pow(c,2)-Math.pow(b,2)-Math.pow(a,2)/-2*a*b);
   gamma_winkel = -beta_winkel-alpha_winkel+180;
   
-  createDiv("Winkel Alpha = "+ alpha_winkel+"°");
-  createDiv("Winkel Beta = "+ beta_winkel+"°");
-  createDiv("Winkel Gamma = "+ gamma_winkel+"°"); 
+  ausgabe_alpha.textContent = "α "+ alpha_winkel+"°"
+  ausgabe_beta.textContent = "β "+ beta_winkel+"°"
+  ausgabe_gamma.textContent = "γ "+ gamma_winkel+"°"
 }
 
 function winkelAlpha (){
