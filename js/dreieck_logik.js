@@ -17,6 +17,7 @@ let button = document.querySelector("#bttn");
 const createDiv = (string) => {
   var p = document.createElement("p");
   p.textContent = string;
+  p.classList.add("ausgabe")
   ergebnis.appendChild(p);
 }
 ///////////////////////////////////////////////////////////

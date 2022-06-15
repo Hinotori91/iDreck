@@ -28,12 +28,24 @@ body {
 }
 
 #ergebnis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 3rem repeat(10, 2rem);
+
   width: 30rem;
   padding: 20px;
   border-radius: 10px;
   background: rgb(50, 50, 50);
   color: rgb(230, 230, 230);
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
+
+.angabe {
+  grid-column: 1;
+  justify-items: center;
+}
+.ausgabe{
+  grid-column: 2;
 }
 
 #eingaben {
