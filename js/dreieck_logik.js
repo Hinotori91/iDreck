@@ -120,6 +120,7 @@ function fill_inputs() {
     case 1:
       console.debug('switch case 1');
       calc.sww_Winkel_berechnen(values);
+      calc.sww_seite_berechnen(values);
       break;
   }
 }

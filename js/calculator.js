@@ -21,19 +21,27 @@ export function sss_Winkel_berechnen (v){
 
 
 //// SWW - SATZ ////
-export function sww_seite_berechnen (){
+// https://www.matheretter.de/wiki/dreieck-berechnen-awawb
+export function sww_seite_berechnen (v){
   console.debug('sww_seite_berechnen');
-  b = (a/sin(alpha_rad))*sin(beta_rad);
-  c = (a/sin(alpha_rad))*sin(gamma_rad);
+  if(v.a && v.a !=""){
+    v.b = (v.a/Math.sin(v.alpha_rad))*Math.sin(v.beta_rad);
+    v.c = (v.a/Math.sin(v.alpha_rad))*Math.sin(v.gamma_rad);
+  }else if(v.b && v.b !=""){
+    v.a = (v.b/Math.sin(v.beta_rad)*Math.sin(v.alpha_rad));
+  }
 }
 
 export function sww_Winkel_berechnen (v){
-  if(v.alpha_winkel !=0 && v.beta_winkel !=0){
+  if((v.alpha_winkel && v.alpha_winkel !="") && (v.beta_winkel && v.beta_winkel !="")){
     v.gamma_winkel = 180 - v.alpha_winkel - v.beta_winkel;
-  }else if(v.alpha_winkel !=0 && v.gamma_winkel !=0){
+    calc_rad_from_angle(v.gamma_winkel);
+  }else if((v.alpha_winkel && v.alpha_winkel !="") && (v.gamma_winkel && v.gamma_winkel !="")){
     v.beta_winkel = 180 - v.alpha_winkel - v.gamma_winkel;
-  }else if (v.beta_winkel !=0 && v.gamma_winkel !=0){
+    calc_rad_from_angle(v.beta_winkel);
+  }else if ((v.beta_winkel && v.beta_winkel !="") && (v.gamma_winkel && v.gamma_winkel !="")){
     v.alpha_winkel = 180 - v.beta_winkel - v.gamma_winkel;
+    calc_rad_from_angle(v.alpha_winkel);
   }
 }
 
