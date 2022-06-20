@@ -1,12 +1,14 @@
+import * as calc from './calculator.js';
+///////////////////////////////////////////////////////////
 let seiten_all = document.querySelectorAll(".seite")
-let seite_a = document.querySelector("#s-a").value;
-let seite_b = document.querySelector("#s-b").value;
-let seite_c = document.querySelector("#s-c").value;
+let seite_a = document.querySelector("#s-a");
+let seite_b = document.querySelector("#s-b");
+let seite_c = document.querySelector("#s-c");
 
 let winkel_all = document.querySelectorAll(".winkel");
-let alpha1 = document.querySelector("#w-a").value;
-let beta1 = document.querySelector("#w-b").value;
-let gamma1 = document.querySelector("#w-c").value;
+let alpha1 = document.querySelector("#w-a");
+let beta1 = document.querySelector("#w-b");
+let gamma1 = document.querySelector("#w-c");
 
 let ergebnis = document.querySelector("#ergebnis");
 
@@ -28,151 +30,146 @@ let ausgabe_umfang = document.querySelector("#ausgabeUmfang");
 let ausgabe_flächeninhalt = document.querySelector("#ausgabeFläche");
 let ausgabe_Seitenhalbe_C = document.querySelector("#ausgabeSeitenhalbeC");
 
-//////////////////////////////////////////////////////////
-
-// Variablen Seiten
-let a = 0;
-let b = 0;
-let c = 0;
-
-if (seite_a!=''){
-  a = parseFloat(seite_a);
-}
-if (seite_b!=''){
-  b = parseFloat(seite_b);
-}
-if (seite_c!=''){
-  c = parseFloat(seite_c);
-}
-// Variablen Winkel
-
-let alpha_winkel = 0;
-let beta_winkel = 0;
-let gamma_winkel = 0;
-
-if (alpha1 !=''){
-  alpha_winkel = parseFloat(alpha1);
-}
-if (beta1 !=''){
-  beta_winkel = parseFloat(beta1);
-}
-if (gamma1 !=''){
-  gamma_winkel = parseFloat(gamma1);
-};
-
-let alpha_rad = 0;
-let beta_rad = 0;
-let gamma_rad = 0;
-
-ausgabe_a.textContent = "Seite A = " + a;
-ausgabe_b.textContent = "Seite B = " + b;
-ausgabe_c.textContent = "Seite C = " + c;
-
-ausgabe_alpha.textContent = alpha_winkel + "°";
-ausgabe_beta.textContent = beta_winkel + "°";
-ausgabe_gamma.textContent = gamma_winkel + "°";
-
-ausgabe_bogenmaß_alpha.textContent = alpha_rad;
-ausgabe_bogenmaß_beta.textContent = beta_rad;
-ausgabe_bogenmaß_gamma.textContent = gamma_rad;
-
-// console.log("Alpha " + alpha_winkel);
-// console.log("Beta " + beta_winkel);
-// console.log("Gamma " + gamma_winkel);
-
-ha = 0;
-hb = 0;
-hc = 0;
+let error = document.querySelector("#error");
 
 ///////////////////////////////////////////////////////////
 
+let values = {};
+
+
+
 // Main
 button.addEventListener('click', ()=>{
-  
-  // Parsing
+  parse_inputs();
+  if(inputs_are_valid()){
+    console.debug('inputs were valid');
+    document.getElementById("error").style.display="none";
+    switch(values.side_count){
+      case 3:
+        console.debug('switch case 3');
+        calc.sss_Winkel_berechnen(values);
+        break;
+      case 2:
+        console.debug('switch case 2');
+        calc.ssw_Seite_berechnen(values);
+        break;
+      case 1:
+        console.debug('switch case 1');
+        break;
+    }
 
+    output_results()
+
+
+  }else{
+    console.debug('inputs invalid');
+    document.getElementById("error").style.display="block";
+  }
   // Calculator Methoden
 
 
   //// SEITEN BERECHNEN ////
-  ssw_Seite_berechnen(a,b,c,alpha_winkel,beta_winkel,gamma_winkel);
+  // ssw_Seite_berechnen(a,b,c,alpha_winkel,beta_winkel,gamma_winkel);
 
-  if(a!="" && b!="" && c!=""){
-    sss_Umfang(a,b,c);
-    sss_Winkel_berechnen(a,b,c);
-  }
-  flächeninhalt(a,b,alpha_rad,beta_rad);
-  seiten_höhe(a,b,alpha_rad,beta_rad);
+  // if(a!="" && b!="" && c!=""){
+    // calc.sss_Umfang(a,b,c);
+    // sss_Umfang(parse_inputs);
+    // sss_Winkel_berechnen(a,b,c);
+  // }
+  // flächeninhalt(a,b,alpha_rad,beta_rad);
+  // seiten_höhe(a,b,alpha_rad,beta_rad);
 
 });
 
 //Funktionen
-
-function sss_Umfang (a,b,c){
-  umfang = a+b+c;
-  ausgabe_umfang.textContent = "U = "+umfang+"cm";
-}
-
-function sss_Winkel_berechnen (a,b,c){
-  alpha_rad = Math.acos((-0.5* Math.pow(a,2) + 0.5* Math.pow(b,2) + 0.5* Math.pow(c,2)) / (b*c));
-  alpha_winkel = alpha_rad * 180 / Math.PI;
-  
-  beta_rad = Math.acos((0.5* Math.pow(a,2) - 0.5* Math.pow(b,2) + 0.5* Math.pow(c,2)) / (a*c));
-  beta_winkel = beta_rad * 180 / Math.PI;
-
-  // ÜBERARBEITUNG NÖTIG!!! NICHT RICHTIG GLAUBE ICH!!!
-  // gamma_winkel = Math.acos(Math.pow(c,2)-Math.pow(b,2)-Math.pow(a,2)/-2*a*b);
-  gamma_winkel = -beta_winkel-alpha_winkel+180;
-  gamma_rad = gamma_winkel/180*Math.PI;
-  
-  ausgabe_alpha.textContent = "α "+ alpha_winkel+"°"
-  ausgabe_beta.textContent = "β "+ beta_winkel+"°"
-  ausgabe_gamma.textContent = "γ "+ gamma_winkel+"°"
-
-  ausgabe_bogenmaß_alpha.textContent = alpha_rad;
-  ausgabe_bogenmaß_beta.textContent = beta_rad;
-  ausgabe_bogenmaß_gamma.textContent = gamma_rad;
-}
-
-function ssw_Winkel_berechnen (){
-
-}
-
-function wws_Winkel_berechnen (){
-
-}
-
-function flächeninhalt(a,b,alpha_rad,beta_rad){
-  if(a!=""){
-    flächeninhalt = a*Math.sin(beta_rad);
-    ausgabe_flächeninhalt.textContent = "A = "+flächeninhalt.toFixed(2);
-  }else if(b!=""){
-    flächeninhalt = b*Math.sin(alpha_rad);
-    ausgabe_flächeninhalt.textContent = "A = "+flächeninhalt.toFixed(2);
-  }else if(a!="" && b!=""){
-    flächeninhalt = a*Math.sin(beta_rad);
-    ausgabe_flächeninhalt.textContent = "A = "+flächeninhalt.toFixed(2);
+function parse_inputs (){
+  values = {
+    value_count : 0,
+    side_count : 0
   };
+
+  if (seite_a.value!=''){
+    values.a = parseFloat(seite_a.value);
+    values.side_count++;
+    values.value_count++;
+  }
+  if (seite_b.value!=''){
+    values.b = parseFloat(seite_b.value);
+    values.side_count++;
+    values.value_count++;
+  }
+  if (seite_c.value!=''){
+    values.c = parseFloat(seite_c.value);
+    values.side_count++;
+    values.value_count++;
+  }
+
+  if (alpha1.value !=''){
+    values.alpha_winkel = parseFloat(alpha1.value);
+    values.value_count++;
+  }
+  if (beta1.value !=''){
+    values.beta_winkel = parseFloat(beta1.value);
+    values.value_count++;
+  }
+  if (gamma1.value !=''){
+    values.gamma_winkel = parseFloat(gamma1.value);
+    values.value_count++;
+  };
+}
+
+function inputs_are_valid() {
+  if(values.value_count != 3) return false;
+  if(values.side_count == 0) return false;
+  if(values.side_count == 3) return true;
+  if(values.side_count == 2)
+    return values.a != "" && values.b != "" && values.gamma_winkel
+        || values.b != "" && values.c != "" && values.alpha_winkel
+        || values.c != "" && values.a != "" && values.beta_winkel
+  return true;  
+}
+
+function output_results () {
+  ausgabe_a.textContent = values.a;
+  ausgabe_b.textContent = values.b;
+  ausgabe_c.textContent = values.c;
+
+  ausgabe_alpha.textContent = "α "+ values.alpha_winkel+"°"
+  ausgabe_beta.textContent = "β "+ values.beta_winkel+"°"
+  ausgabe_gamma.textContent = "γ "+ values.gamma_winkel+"°"
+
+  ausgabe_bogenmaß_alpha.textContent = values.alpha_rad;
+  ausgabe_bogenmaß_beta.textContent = values.beta_rad;
+  ausgabe_bogenmaß_gamma.textContent = values.gamma_rad;
+
+  ausgabe_umfang.textContent = values.umfang;
+  ausgabe_flächeninhalt.textContent = values.flächeninhalt;
+}
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
 // A=1/2a*ha
 // A=1/2b*hb
 // A=1/2c*hc
-}
 
 // Höhe a (ha)
 // Höhe b (hb)
 // Höhe c (hc)
-function seiten_höhe (a,b,alpha_rad,beta_rad){
-  if(a!=""){
-    höhe_C = a*Math.sin(beta_rad);
-    ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
-  }else if(b!=""){
-    höhe_C = b*Math.sin(alpha_rad);
-    ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
-  }else if(a!="" && b!=""){
-    höhe_C = a*Math.sin(beta_rad);
-    ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
-  };
-}
 
 // Umkreisradius
 // Inkreisradius
@@ -182,32 +179,3 @@ function seiten_höhe (a,b,alpha_rad,beta_rad){
 // Winkel alpha
 // Winkel beta
 // Winkel gamma
-
-function ssw_Seite_berechnen (a,b,c,alpha_winkel,beta_winkel,gamma_winkel){
-  
-  if(b!="" && c!="" && alpha_winkel!=""){
-    alpha_rad = calc_rad(alpha_winkel);
-    a = seite_berechnen(b, c, alpha_rad)
-    
-    ausgabe_a.textContent = a;
-    ausgabe_bogenmaß_alpha.textContent = alpha_rad;
-  }else if(a!="" && c!="" && beta_winkel!=""){
-    beta_rad = calc_rad(beta_winkel);
-    b = seite_berechnen(a, c, beta_rad); 
-    
-    ausgabe_b.textContent = b.toFixed(2);
-    ausgabe_bogenmaß_beta.textContent = beta_rad.toFixed(2);
-  }else if(a!="" && b!="" && gamma_winkel!=""){
-    gamma_rad = calc_rad(gamma_winkel);
-    c = seite_berechnen(a,b,gamma_rad);
-    
-    ausgabe_c.textContent = c;
-    ausgabe_bogenmaß_gamma.textContent = gamma_rad;
-  }
-}
-function seite_berechnen (seite1, seite2, rad){
-    return Math.sqrt(Math.pow(seite1,2) + Math.pow(seite2,2) - 2*seite1*seite2 * Math.cos(rad));
-}
-function calc_rad (winkel){
-  return winkel / 180 * Math.PI;
-}

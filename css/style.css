@@ -51,11 +51,30 @@ body {
   display: flex;
   flex-direction: column;
   width: 29rem;
+  /* width: 100%; */
   margin-right: 15px;
   padding: 20px;
   border-radius: 10px;
   background-color: rgb(50, 50, 50);
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
+
+#wrapper {
+  height: 3rem;
+  margin-bottom: 10px;
+}
+
+#error {
+  display: flex;
+  justify-items: center;
+  background-color: rgb(255, 167, 167);
+  border-color: red;
+  color: rgb(170, 0, 0);
+  border-radius: 3px;
+  padding: 0 1em;
+  height: 100%;
+  align-items: center;
+  display: none;
 }
 
 .ausgabe{
