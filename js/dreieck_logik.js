@@ -45,8 +45,9 @@ button.addEventListener('click', ()=>{
     console.debug('inputs were valid');
     hide_error_message();
     fill_inputs();
-    // Umfang
-    // Flächeninhalt
+
+    calc.umfang(values);
+    calc.flächeninhalt(values);
     // Umkreisradius
     // Inkreisradius
     // Seitenhalbierende a

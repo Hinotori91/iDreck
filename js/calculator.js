@@ -1,9 +1,4 @@
 //// SSS - SATZ ////
-export function sss_Umfang (a,b,c){
-  umfang = a+b+c;
-  ausgabe_umfang.textContent = "U = "+umfang+"cm";
-}
-
 // v = Values-Objekt from 'dreieck_logik.js'
 export function sss_Winkel_berechnen (v){
   console.debug('sss_Winkel berechnen');
@@ -35,13 +30,19 @@ export function sww_seite_berechnen (v){
 export function sww_Winkel_berechnen (v){
   if((v.alpha_winkel && v.alpha_winkel !="") && (v.beta_winkel && v.beta_winkel !="")){
     v.gamma_winkel = 180 - v.alpha_winkel - v.beta_winkel;
-    calc_rad_from_angle(v.gamma_winkel);
+    v.gamma_rad = calc_rad_from_angle(v.gamma_winkel);
+    v.alpha_rad = calc_rad_from_angle (v.alpha_winkel);
+    v.beta_rad = calc_rad_from_angle (v.beta_winkel);
   }else if((v.alpha_winkel && v.alpha_winkel !="") && (v.gamma_winkel && v.gamma_winkel !="")){
     v.beta_winkel = 180 - v.alpha_winkel - v.gamma_winkel;
-    calc_rad_from_angle(v.beta_winkel);
+    v.beta_rad = calc_rad_from_angle(v.beta_winkel);
+    v.alpha_rad = calc_rad_from_angle(v.alpha_winkel);
+    v.gamma_rad = calc_rad_from_angle(c.gamma_winkel);
   }else if ((v.beta_winkel && v.beta_winkel !="") && (v.gamma_winkel && v.gamma_winkel !="")){
     v.alpha_winkel = 180 - v.beta_winkel - v.gamma_winkel;
-    calc_rad_from_angle(v.alpha_winkel);
+    v.alpha_rad = calc_rad_from_angle(v.alpha_winkel);
+    v.beta_rad = calc_rad_from_angle(v.beta_winkel);
+    v.gamma_rad = calc_rad_from_angle(v.gamma_winkel);
   }
 }
 
@@ -65,14 +66,18 @@ export function ssw_Seite_berechnen (v){
   }
 }
 
+export function umfang (v){
+  v.umfang = v.a+v.b+v.c;
+}
+
 export function flächeninhalt(v){
   console.debug('flächeninhalt');
   if(v.a!=""){
-    flächeninhalt = v.a*Math.sin(v.beta_rad);
+    v.flächeninhalt = v.a*Math.sin(v.beta_rad);
   }else if(v.b!=""){
-    flächeninhalt = v.b*Math.sin(v.alpha_rad);
+    v.flächeninhalt = v.b*Math.sin(v.alpha_rad);
   }else if(v.a!="" && v.b!=""){
-    flächeninhalt = v.a*Math.sin(v.beta_rad);
+    v.flächeninhalt = v.a*Math.sin(v.beta_rad);
   }
 }
 
