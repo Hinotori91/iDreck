@@ -169,6 +169,7 @@ function seiten_höhe (a,b,alpha_rad,beta_rad){
     ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
   };
 }
+
 // Umkreisradius
 // Inkreisradius
 // Seitenhalbierende a (sa)
