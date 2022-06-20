@@ -36,13 +36,13 @@ let b = 0;
 let c = 0;
 
 if (seite_a!=''){
-  a = parseInt(seite_a);
+  a = parseFloat(seite_a);
 }
 if (seite_b!=''){
-  b = parseInt(seite_b);
+  b = parseFloat(seite_b);
 }
 if (seite_c!=''){
-  c = parseInt(seite_c);
+  c = parseFloat(seite_c);
 }
 // Variablen Winkel
 
@@ -51,13 +51,13 @@ let beta_winkel = 0;
 let gamma_winkel = 0;
 
 if (alpha1 !=''){
-  alpha_winkel = parseInt(alpha1);
+  alpha_winkel = parseFloat(alpha1);
 }
 if (beta1 !=''){
-  beta_winkel = parseInt(beta1);
+  beta_winkel = parseFloat(beta1);
 }
 if (gamma1 !=''){
-  gamma_winkel = parseInt(gamma1);
+  gamma_winkel = parseFloat(gamma1);
 };
 
 let alpha_rad = 0;
@@ -88,10 +88,14 @@ hc = 0;
 
 // Main
 button.addEventListener('click', ()=>{
+  
+  // Parsing
+
+  // Calculator Methoden
+
+
   //// SEITEN BERECHNEN ////
-  if((b!="" && c!="" && alpha_winkel !=0) || (a=!"" && c!=0 && beta_winkel!=0) || (a!="" && b!="" && gamma_winkel!=0)){
-    ssw_Seite_berechnen(a,b,c,alpha_winkel,beta_winkel,gamma_winkel);
-  }
+  ssw_Seite_berechnen(a,b,c,alpha_winkel,beta_winkel,gamma_winkel);
 
   if(a!="" && b!="" && c!=""){
     sss_Umfang(a,b,c);
@@ -99,9 +103,8 @@ button.addEventListener('click', ()=>{
   }
   flächeninhalt(a,b,alpha_rad,beta_rad);
   seiten_höhe(a,b,alpha_rad,beta_rad);
+
 });
-
-
 
 //Funktionen
 
@@ -142,12 +145,13 @@ function wws_Winkel_berechnen (){
 function flächeninhalt(a,b,alpha_rad,beta_rad){
   if(a!=""){
     flächeninhalt = a*Math.sin(beta_rad);
-    ausgabe_flächeninhalt.textContent = "A = "+flächeninhalt;
+    ausgabe_flächeninhalt.textContent = "A = "+flächeninhalt.toFixed(2);
   }else if(b!=""){
     flächeninhalt = b*Math.sin(alpha_rad);
+    ausgabe_flächeninhalt.textContent = "A = "+flächeninhalt.toFixed(2);
   }else if(a!="" && b!=""){
     flächeninhalt = a*Math.sin(beta_rad);
-    ausgabe_flächeninhalt.textContent = "A = "+flächeninhalt;
+    ausgabe_flächeninhalt.textContent = "A = "+flächeninhalt.toFixed(2);
   };
 // A=1/2a*ha
 // A=1/2b*hb
@@ -181,17 +185,28 @@ function seiten_höhe (a,b,alpha_rad,beta_rad){
 
 function ssw_Seite_berechnen (a,b,c,alpha_winkel,beta_winkel,gamma_winkel){
   
-  if(b!="" && c!="" && alpha_winkel!=0){
+  if(b!="" && c!="" && alpha_winkel!=""){
     alpha_rad = alpha_winkel / 180 * Math.PI;
     a = Math.sqrt(Math.pow(b,2) + Math.pow(c,2) - 2*b*c * Math.cos(alpha_rad));
     ausgabe_a.textContent = a;
-  }else if(a!="" && c!="" && beta_winkel!=0){
+    ausgabe_bogenmaß_alpha.textContent = alpha_rad;
+  }else if(a!="" && c!="" && beta_winkel!=""){
     beta_rad = beta_winkel /180 * Math.PI;
-    b = Math.sqrt(Math.pow(a,2) + Math.pow(c,2) - 2*b*c * Math.cos(beta_rad));
-    ausgabe_b.textContent = b;
-  }else if(a!="" && b!="" && gamma_winkel!=0){
-    gamma_rad = gamma_winkel /180 * Math.PI;
+  
+    b = Math.sqrt(Math.pow(a,2) - 2*a*c*Math.cos(beta_rad) + Math.pow(c,2));
+
+    ausgabe_b.textContent = b.toFixed(2);
+    ausgabe_bogenmaß_beta.textContent = beta_rad.toFixed(2);
+  }else if(a!="" && b!="" && gamma_winkel!=""){
+    gamma_rad = gamma_winkel / 180 * Math.PI;
     c = Math.sqrt(Math.pow(a,2) + Math.pow(b,2) - 2*a*b * Math.cos(gamma_rad));
     ausgabe_c.textContent = c;
+    ausgabe_bogenmaß_gamma.textContent = gamma_rad;
   }
+}
+function seite_berechnen (seite1, seite2, rad){
+    return Math.sqrt(Math.pow(seite1,2) + Math.pow(seite2,2) - 2*seite1*seite2 * Math.cos(rad));
+}
+function calcRad (winkel){
+  return winkel / 180 * Math.PI;
 }
