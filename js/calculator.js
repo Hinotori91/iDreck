@@ -27,7 +27,14 @@ export function sww_seite_berechnen (){
   c = (a/sin(alpha_rad))*sin(gamma_rad);
 }
 
-export function sww_Winkel_berechnen (){
+export function sww_Winkel_berechnen (v){
+  if(v.alpha_winkel !=0 && v.beta_winkel !=0){
+    v.gamma_winkel = 180 - v.alpha_winkel - v.beta_winkel;
+  }else if(v.alpha_winkel !=0 && v.gamma_winkel !=0){
+    v.beta_winkel = 180 - v.alpha_winkel - v.gamma_winkel;
+  }else if (v.beta_winkel !=0 && v.gamma_winkel !=0){
+    v.alpha_winkel = 180 - v.beta_winkel - v.gamma_winkel;
+  }
 }
 
 

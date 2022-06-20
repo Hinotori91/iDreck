@@ -43,42 +43,20 @@ button.addEventListener('click', ()=>{
   parse_inputs();
   if(inputs_are_valid()){
     console.debug('inputs were valid');
-    document.getElementById("error").style.display="none";
-    switch(values.side_count){
-      case 3:
-        console.debug('switch case 3');
-        calc.sss_Winkel_berechnen(values);
-        break;
-      case 2:
-        console.debug('switch case 2');
-        calc.ssw_Seite_berechnen(values);
-        break;
-      case 1:
-        console.debug('switch case 1');
-        break;
-    }
-
+    hide_error_message();
+    fill_inputs();
+    // Umfang
+    // Flächeninhalt
+    // Umkreisradius
+    // Inkreisradius
+    // Seitenhalbierende a
+    // Seitenhalbierende b
+    // Seitenhalbierende c
     output_results()
-
-
   }else{
     console.debug('inputs invalid');
-    document.getElementById("error").style.display="block";
+    show_error_message();
   }
-  // Calculator Methoden
-
-
-  //// SEITEN BERECHNEN ////
-  // ssw_Seite_berechnen(a,b,c,alpha_winkel,beta_winkel,gamma_winkel);
-
-  // if(a!="" && b!="" && c!=""){
-    // calc.sss_Umfang(a,b,c);
-    // sss_Umfang(parse_inputs);
-    // sss_Winkel_berechnen(a,b,c);
-  // }
-  // flächeninhalt(a,b,alpha_rad,beta_rad);
-  // seiten_höhe(a,b,alpha_rad,beta_rad);
-
 });
 
 //Funktionen
@@ -129,6 +107,23 @@ function inputs_are_valid() {
   return true;  
 }
 
+function fill_inputs() {
+  switch (values.side_count) {
+    case 3:
+      console.debug('switch case 3');
+      calc.sss_Winkel_berechnen(values);
+      break;
+    case 2:
+      console.debug('switch case 2');
+      calc.ssw_Seite_berechnen(values);
+      break;
+    case 1:
+      console.debug('switch case 1');
+      calc.sww_Winkel_berechnen(values);
+      break;
+  }
+}
+
 function output_results () {
   ausgabe_a.textContent = values.a;
   ausgabe_b.textContent = values.b;
@@ -146,7 +141,13 @@ function output_results () {
   ausgabe_flächeninhalt.textContent = values.flächeninhalt;
 }
 
+function hide_error_message () {
+  document.getElementById("error").style.display="none";
+}
 
+function show_error_message () {
+  document.getElementById("error").style.display="block";
+}
 
 
 
