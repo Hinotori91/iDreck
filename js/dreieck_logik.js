@@ -186,20 +186,21 @@ function seiten_höhe (a,b,alpha_rad,beta_rad){
 function ssw_Seite_berechnen (a,b,c,alpha_winkel,beta_winkel,gamma_winkel){
   
   if(b!="" && c!="" && alpha_winkel!=""){
-    alpha_rad = alpha_winkel / 180 * Math.PI;
-    a = Math.sqrt(Math.pow(b,2) + Math.pow(c,2) - 2*b*c * Math.cos(alpha_rad));
+    alpha_rad = calc_rad(alpha_winkel);
+    a = seite_berechnen(b, c, alpha_rad)
+    
     ausgabe_a.textContent = a;
     ausgabe_bogenmaß_alpha.textContent = alpha_rad;
   }else if(a!="" && c!="" && beta_winkel!=""){
-    beta_rad = beta_winkel /180 * Math.PI;
-  
-    b = Math.sqrt(Math.pow(a,2) - 2*a*c*Math.cos(beta_rad) + Math.pow(c,2));
-
+    beta_rad = calc_rad(beta_winkel);
+    b = seite_berechnen(a, c, beta_rad); 
+    
     ausgabe_b.textContent = b.toFixed(2);
     ausgabe_bogenmaß_beta.textContent = beta_rad.toFixed(2);
   }else if(a!="" && b!="" && gamma_winkel!=""){
-    gamma_rad = gamma_winkel / 180 * Math.PI;
-    c = Math.sqrt(Math.pow(a,2) + Math.pow(b,2) - 2*a*b * Math.cos(gamma_rad));
+    gamma_rad = calc_rad(gamma_winkel);
+    c = seite_berechnen(a,b,gamma_rad);
+    
     ausgabe_c.textContent = c;
     ausgabe_bogenmaß_gamma.textContent = gamma_rad;
   }
@@ -207,6 +208,6 @@ function ssw_Seite_berechnen (a,b,c,alpha_winkel,beta_winkel,gamma_winkel){
 function seite_berechnen (seite1, seite2, rad){
     return Math.sqrt(Math.pow(seite1,2) + Math.pow(seite2,2) - 2*seite1*seite2 * Math.cos(rad));
 }
-function calcRad (winkel){
+function calc_rad (winkel){
   return winkel / 180 * Math.PI;
 }
