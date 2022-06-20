@@ -89,9 +89,9 @@ hc = 0;
 // Main
 button.addEventListener('click', ()=>{
   //// SEITEN BERECHNEN ////
-  // if((b!="" && c!="" && alpha_winkel !=0) || (a=!"" && c!=0 && beta_winkel!=0) || (a!="" && b!="" && gamma_winkel!=0)){
-  //   ssw_Seite_berechnen(a,b,c,alpha_winkel,beta_winkel,gamma_winkel);
-  // }
+  if((b!="" && c!="" && alpha_winkel !=0) || (a=!"" && c!=0 && beta_winkel!=0) || (a!="" && b!="" && gamma_winkel!=0)){
+    ssw_Seite_berechnen(a,b,c,alpha_winkel,beta_winkel,gamma_winkel);
+  }
 
   if(a!="" && b!="" && c!=""){
     sss_Umfang(a,b,c);
@@ -179,13 +179,6 @@ function seiten_höhe (a,b,alpha_rad,beta_rad){
 // Winkel gamma
 
 function ssw_Seite_berechnen (a,b,c,alpha_winkel,beta_winkel,gamma_winkel){
-  // if(alpha_winkel!=""){
-  //   alpha_rad = alpha_winkel / 180 * Math.PI;
-  // }else if(beta_winkel!=""){
-  //   beta_rad = beta_winkel /180 * Math.PI;
-  // }else if(gamma_winkel!=""){
-  //   gamma_rad = gamma_winkel /180 * Math.PI;
-  // }
   
   if(b!="" && c!="" && alpha_winkel!=0){
     alpha_rad = alpha_winkel / 180 * Math.PI;
