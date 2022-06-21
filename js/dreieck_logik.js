@@ -131,16 +131,18 @@ function output_results () {
   ausgabe_b.textContent = values.b;
   ausgabe_c.textContent = values.c;
 
-  ausgabe_alpha.textContent = "α "+ values.alpha_winkel+"°"
-  ausgabe_beta.textContent = "β "+ values.beta_winkel+"°"
-  ausgabe_gamma.textContent = "γ "+ values.gamma_winkel+"°"
+  ausgabe_alpha.textContent = "α "+ values.alpha_winkel.toFixed(3)+"°"
+  ausgabe_beta.textContent = "β "+ values.beta_winkel.toFixed(3)+"°"
+  ausgabe_gamma.textContent = "γ "+ values.gamma_winkel.toFixed(3)+"°"
 
-  ausgabe_bogenmaß_alpha.textContent = values.alpha_rad;
-  ausgabe_bogenmaß_beta.textContent = values.beta_rad;
-  ausgabe_bogenmaß_gamma.textContent = values.gamma_rad;
+  ausgabe_bogenmaß_alpha.textContent = values.alpha_rad.toFixed(3);
+  ausgabe_bogenmaß_beta.textContent = values.beta_rad.toFixed(3);
+  ausgabe_bogenmaß_gamma.textContent = values.gamma_rad.toFixed(3);
 
-  ausgabe_umfang.textContent = values.umfang;
-  ausgabe_flächeninhalt.textContent = values.flächeninhalt;
+  ausgabe_umfang.textContent = values.umfang.toFixed(3);
+  ausgabe_flächeninhalt.textContent = values.flächeninhalt.toFixed(3);
+
+  ausgabe_Seitenhalbe_C.textContent = values.hoehe_C;
 }
 
 function hide_error_message () {

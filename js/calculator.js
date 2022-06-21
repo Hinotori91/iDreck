@@ -2,10 +2,12 @@
 // v = Values-Objekt from 'dreieck_logik.js'
 export function sss_Winkel_berechnen (v){
   console.debug('sss_Winkel berechnen');
-  v.alpha_rad = Math.acos((-0.5* Math.pow(v.a,2) + 0.5* Math.pow(v.b,2) + 0.5* Math.pow(v.c,2)) / (v.b*v.c));
+  v.alpha_rad = Math.acos((-0.5* Math.pow(v.a,2) 
+                + 0.5* Math.pow(v.b,2) + 0.5* Math.pow(v.c,2)) / (v.b*v.c));
   v.alpha_winkel = v.alpha_rad * 180 / Math.PI;
   
-  v.beta_rad = Math.acos((0.5* Math.pow(v.a,2) - 0.5* Math.pow(v.b,2) + 0.5* Math.pow(v.c,2)) / (v.a*v.c));
+  v.beta_rad = Math.acos((0.5* Math.pow(v.a,2) 
+              - 0.5* Math.pow(v.b,2) + 0.5* Math.pow(v.c,2)) / (v.a*v.c));
   v.beta_winkel = v.beta_rad * 180 / Math.PI;
 
   // ÜBERARBEITUNG NÖTIG!!! NICHT RICHTIG GLAUBE ICH!!!
@@ -28,17 +30,20 @@ export function sww_seite_berechnen (v){
 }
 
 export function sww_Winkel_berechnen (v){
-  if((v.alpha_winkel && v.alpha_winkel !="") && (v.beta_winkel && v.beta_winkel !="")){
+  if((v.alpha_winkel && v.alpha_winkel !="") && 
+      (v.beta_winkel && v.beta_winkel !="")){
     v.gamma_winkel = 180 - v.alpha_winkel - v.beta_winkel;
     v.gamma_rad = calc_rad_from_angle(v.gamma_winkel);
     v.alpha_rad = calc_rad_from_angle (v.alpha_winkel);
     v.beta_rad = calc_rad_from_angle (v.beta_winkel);
-  }else if((v.alpha_winkel && v.alpha_winkel !="") && (v.gamma_winkel && v.gamma_winkel !="")){
+  }else if((v.alpha_winkel && v.alpha_winkel !="") &&
+            (v.gamma_winkel && v.gamma_winkel !="")){
     v.beta_winkel = 180 - v.alpha_winkel - v.gamma_winkel;
     v.beta_rad = calc_rad_from_angle(v.beta_winkel);
     v.alpha_rad = calc_rad_from_angle(v.alpha_winkel);
     v.gamma_rad = calc_rad_from_angle(c.gamma_winkel);
-  }else if ((v.beta_winkel && v.beta_winkel !="") && (v.gamma_winkel && v.gamma_winkel !="")){
+  }else if ((v.beta_winkel && v.beta_winkel !="") && 
+            (v.gamma_winkel && v.gamma_winkel !="")){
     v.alpha_winkel = 180 - v.beta_winkel - v.gamma_winkel;
     v.alpha_rad = calc_rad_from_angle(v.alpha_winkel);
     v.beta_rad = calc_rad_from_angle(v.beta_winkel);
@@ -81,23 +86,28 @@ export function flächeninhalt(v){
   }
 }
 
-export function seiten_höhe (a,b,alpha_rad,beta_rad){
+export function seiten_höhe (v){
   console.debug('seiten_höhe');
-  if(a!=""){
-    höhe_C = a*Math.sin(beta_rad);
-    ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
-  }else if(b!=""){
-    höhe_C = b*Math.sin(alpha_rad);
-    ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
-  }else if(a!="" && b!=""){
-    höhe_C = a*Math.sin(beta_rad);
-    ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
+  if(v.a!=""){
+    v.hoehe_C = v.a*Math.sin(v.beta_rad);
+    // ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
+  }else if(v.b!=""){
+    v.hoehe_C = v.b*Math.sin(v.alpha_rad);
+    // ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
+  }else if(v.a!="" && v.b!=""){
+    v.hoehe_C = v.a*Math.sin(v.beta_rad);
+    // ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
   }
+}
+
+export function umkreisradius (v){
+  v.umkreisradius = v.a * v.b * v.c / (4 * flächeninhalt());
 }
 
 
 function seite_berechnen (seite1, seite2, rad){
-  return Math.sqrt(Math.pow(seite1,2) + Math.pow(seite2,2) - 2*seite1*seite2 * Math.cos(rad));
+  return Math.sqrt(Math.pow(seite1,2) + Math.pow(seite2,2) 
+                  - 2*seite1*seite2 * Math.cos(rad));
 }
 function calc_rad_from_angle (winkel){
   return winkel / 180 * Math.PI;
