@@ -101,14 +101,6 @@ export function seiten_höhe_C (v){
 export function seiten_höhe_A (v){
   console.debug('seiten_höhe_A');
   v.hoehe_A = v.b * Math.sin(v.gamma_rad);
-  // if(v.a!=""){
-  //   // v.hoehe_C = v.a*Math.sin(v.beta_rad);
-  // }else if(v.b!=""){
-  //   // v.hoehe_C = v.b*Math.sin(v.alpha_rad);
-  //   v.hoehe_A = v.b * Math.sin(v.gamma_rad);
-  // }else if(v.a!="" && v.b!=""){
-  //   // v.hoehe_C = v.a*Math.sin(v.beta_rad);
-  // }
 }
 
 export function umkreisradius (v){
