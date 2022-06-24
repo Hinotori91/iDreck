@@ -32,7 +32,7 @@ let ausgabe_umkreisradius = document.querySelector("#ausgabeUmkreisradius");
 let ausgabe_inkreisradius = document.querySelector("#ausgabeInkreisradius");
 
 let ausgabe_Seitenhalbe_A = document.querySelector("#ausgabeSeitenhalbeA");
-let ausgabe_Seitenhalbe_B = document.querySelector("ausgabeSeitenhalbeB");
+let ausgabe_Seitenhalbe_B = document.querySelector("#ausgabeSeitenhalbeB");
 let ausgabe_Seitenhalbe_C = document.querySelector("#ausgabeSeitenhalbeC");
 
 let error = document.querySelector("#error");
@@ -135,9 +135,9 @@ function fill_inputs() {
 
 
 function output_results () {
-  ausgabe_a.textContent = values.a;
-  ausgabe_b.textContent = values.b;
-  ausgabe_c.textContent = values.c;
+  ausgabe_a.textContent = values.a.toFixed(rundungszahl);
+  ausgabe_b.textContent = values.b.toFixed(rundungszahl);
+  ausgabe_c.textContent = values.c.toFixed(rundungszahl);
 
   ausgabe_alpha.textContent = "α "+ values.alpha_winkel.toFixed(rundungszahl)+"°"
   ausgabe_beta.textContent = "β "+ values.beta_winkel.toFixed(rundungszahl)+"°"
@@ -152,9 +152,9 @@ function output_results () {
   ausgabe_umkreisradius.textContent = values.umkreisradius.toFixed(rundungszahl);
   ausgabe_inkreisradius.textContent = values.inkreisradius.toFixed(rundungszahl);
 
-  ausgabe_Seitenhalbe_A.textContent = values.hoehe_A;
-  ausgabe_Seitenhalbe_B.textContent = values.hoehe_B;
-  ausgabe_Seitenhalbe_C.textContent = values.hoehe_C;
+  ausgabe_Seitenhalbe_A.textContent = values.hoehe_A.toFixed(rundungszahl);
+  ausgabe_Seitenhalbe_B.textContent = values.hoehe_B.toFixed(rundungszahl);
+  ausgabe_Seitenhalbe_C.textContent = values.hoehe_C.toFixed(rundungszahl);
 }
 
 function hide_error_message () {
