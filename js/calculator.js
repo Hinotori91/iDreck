@@ -86,7 +86,7 @@ export function flächeninhalt(v){
   }
 }
 
-export function seiten_höhe (v){
+export function seiten_höhe_C (v){
   console.debug('seiten_höhe');
   if(v.a!=""){
     v.hoehe_C = v.a*Math.sin(v.beta_rad);
@@ -100,6 +100,10 @@ export function seiten_höhe (v){
 export function umkreisradius (v){
   console.debug('umkreisradius');
   v.umkreisradius = v.a * v.b * v.c / (4 * v.flächeninhalt);
+}
+
+export function inkreisradius(v){
+  v.inkreisradius = 2*v.flächeninhalt/v.umfang;
 }
 
 

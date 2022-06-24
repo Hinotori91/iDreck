@@ -29,12 +29,14 @@ let ausgabe_bogenmaß_gamma = document.querySelector("#ausgabeBogenmaßGamma");
 let ausgabe_umfang = document.querySelector("#ausgabeUmfang");
 let ausgabe_flächeninhalt = document.querySelector("#ausgabeFläche");
 let ausgabe_umkreisradius = document.querySelector("#ausgabeUmkreisradius");
+let ausgabe_inkreisradius = document.querySelector("#ausgabeInkreisradius");
 
 let ausgabe_Seitenhalbe_C = document.querySelector("#ausgabeSeitenhalbeC");
 
 let error = document.querySelector("#error");
 
 ///////////////////////////////////////////////////////////
+let rundungszahl = 3;
 
 let values = {};
 
@@ -51,10 +53,11 @@ button.addEventListener('click', ()=>{
     calc.umfang(values);
     calc.flächeninhalt(values);
     calc.umkreisradius(values);
-    // Inkreisradius
+    calc.inkreisradius(values);
     // Seitenhalbierende a
     // Seitenhalbierende b
     // Seitenhalbierende c
+    calc.seiten_höhe_C(values);
     output_results()
   }else{
     console.debug('inputs invalid');
@@ -128,22 +131,25 @@ function fill_inputs() {
   }
 }
 
+
+
 function output_results () {
   ausgabe_a.textContent = values.a;
   ausgabe_b.textContent = values.b;
   ausgabe_c.textContent = values.c;
 
-  ausgabe_alpha.textContent = "α "+ values.alpha_winkel.toFixed(3)+"°"
-  ausgabe_beta.textContent = "β "+ values.beta_winkel.toFixed(3)+"°"
-  ausgabe_gamma.textContent = "γ "+ values.gamma_winkel.toFixed(3)+"°"
+  ausgabe_alpha.textContent = "α "+ values.alpha_winkel.toFixed(rundungszahl)+"°"
+  ausgabe_beta.textContent = "β "+ values.beta_winkel.toFixed(rundungszahl)+"°"
+  ausgabe_gamma.textContent = "γ "+ values.gamma_winkel.toFixed(rundungszahl)+"°"
 
-  ausgabe_bogenmaß_alpha.textContent = values.alpha_rad.toFixed(3);
-  ausgabe_bogenmaß_beta.textContent = values.beta_rad.toFixed(3);
-  ausgabe_bogenmaß_gamma.textContent = values.gamma_rad.toFixed(3);
+  ausgabe_bogenmaß_alpha.textContent = values.alpha_rad.toFixed(rundungszahl);
+  ausgabe_bogenmaß_beta.textContent = values.beta_rad.toFixed(rundungszahl);
+  ausgabe_bogenmaß_gamma.textContent = values.gamma_rad.toFixed(rundungszahl);
 
-  ausgabe_umfang.textContent = values.umfang.toFixed(3);
-  ausgabe_flächeninhalt.textContent = values.flächeninhalt.toFixed(3);
-  ausgabe_umkreisradius.textContent = values.umkreisradius;
+  ausgabe_umfang.textContent = values.umfang.toFixed(rundungszahl);
+  ausgabe_flächeninhalt.textContent = values.flächeninhalt.toFixed(rundungszahl);
+  ausgabe_umkreisradius.textContent = values.umkreisradius.toFixed(rundungszahl);
+  ausgabe_inkreisradius.textContent = values.inkreisradius.toFixed(rundungszahl);
 
 
   ausgabe_Seitenhalbe_C.textContent = values.hoehe_C;
