@@ -90,18 +90,16 @@ export function seiten_höhe (v){
   console.debug('seiten_höhe');
   if(v.a!=""){
     v.hoehe_C = v.a*Math.sin(v.beta_rad);
-    // ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
   }else if(v.b!=""){
     v.hoehe_C = v.b*Math.sin(v.alpha_rad);
-    // ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
   }else if(v.a!="" && v.b!=""){
     v.hoehe_C = v.a*Math.sin(v.beta_rad);
-    // ausgabe_Seitenhalbe_C.textContent = "hc = "+höhe_C;
   }
 }
 
 export function umkreisradius (v){
-  v.umkreisradius = v.a * v.b * v.c / (4 * flächeninhalt());
+  console.debug('umkreisradius');
+  v.umkreisradius = v.a * v.b * v.c / (4 * v.flächeninhalt);
 }
 
 

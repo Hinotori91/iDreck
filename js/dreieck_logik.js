@@ -28,6 +28,8 @@ let ausgabe_bogenmaß_gamma = document.querySelector("#ausgabeBogenmaßGamma");
 
 let ausgabe_umfang = document.querySelector("#ausgabeUmfang");
 let ausgabe_flächeninhalt = document.querySelector("#ausgabeFläche");
+let ausgabe_umkreisradius = document.querySelector("#ausgabeUmkreisradius");
+
 let ausgabe_Seitenhalbe_C = document.querySelector("#ausgabeSeitenhalbeC");
 
 let error = document.querySelector("#error");
@@ -48,7 +50,7 @@ button.addEventListener('click', ()=>{
 
     calc.umfang(values);
     calc.flächeninhalt(values);
-    // Umkreisradius
+    calc.umkreisradius(values);
     // Inkreisradius
     // Seitenhalbierende a
     // Seitenhalbierende b
@@ -141,6 +143,8 @@ function output_results () {
 
   ausgabe_umfang.textContent = values.umfang.toFixed(3);
   ausgabe_flächeninhalt.textContent = values.flächeninhalt.toFixed(3);
+  ausgabe_umkreisradius.textContent = values.umkreisradius;
+
 
   ausgabe_Seitenhalbe_C.textContent = values.hoehe_C;
 }
