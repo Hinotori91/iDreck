@@ -32,6 +32,7 @@ let ausgabe_umkreisradius = document.querySelector("#ausgabeUmkreisradius");
 let ausgabe_inkreisradius = document.querySelector("#ausgabeInkreisradius");
 
 let ausgabe_Seitenhalbe_A = document.querySelector("#ausgabeSeitenhalbeA");
+let ausgabe_Seitenhalbe_B = document.querySelector("ausgabeSeitenhalbeB");
 let ausgabe_Seitenhalbe_C = document.querySelector("#ausgabeSeitenhalbeC");
 
 let error = document.querySelector("#error");
@@ -55,9 +56,8 @@ button.addEventListener('click', ()=>{
     calc.flächeninhalt(values);
     calc.umkreisradius(values);
     calc.inkreisradius(values);
-    // Seitenhalbierende a
     calc.seiten_höhe_A(values);
-    // Seitenhalbierende b
+    calc.seiten_höhe_B(values);
     calc.seiten_höhe_C(values);
     output_results()
   }else{
@@ -153,6 +153,7 @@ function output_results () {
   ausgabe_inkreisradius.textContent = values.inkreisradius.toFixed(rundungszahl);
 
   ausgabe_Seitenhalbe_A.textContent = values.hoehe_A;
+  ausgabe_Seitenhalbe_B.textContent = values.hoehe_B;
   ausgabe_Seitenhalbe_C.textContent = values.hoehe_C;
 }
 
