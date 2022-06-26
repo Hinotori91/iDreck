@@ -37,9 +37,10 @@ let ausgabe_Seitenhalbe_C = document.querySelector("#ausgabeSeitenhalbeC");
 
 let error = document.querySelector("#error");
 
-///////////////////////////////////////////////////////////
-let rundungszahl = 3;
+let round_number = document.querySelector("#rundungsfeld");
 
+///////////////////////////////////////////////////////////
+// let rundungszahl = 3;
 let values = {};
 
 
@@ -135,13 +136,14 @@ function fill_inputs() {
 
 
 function output_results () {
+  let rundungszahl = round_number.value;
   ausgabe_a.textContent = values.a.toFixed(rundungszahl);
   ausgabe_b.textContent = values.b.toFixed(rundungszahl);
   ausgabe_c.textContent = values.c.toFixed(rundungszahl);
 
-  ausgabe_alpha.textContent = "α "+ values.alpha_winkel.toFixed(rundungszahl)+"°"
-  ausgabe_beta.textContent = "β "+ values.beta_winkel.toFixed(rundungszahl)+"°"
-  ausgabe_gamma.textContent = "γ "+ values.gamma_winkel.toFixed(rundungszahl)+"°"
+  ausgabe_alpha.textContent = "α "+ values.alpha_winkel.toFixed(rundungszahl);
+  ausgabe_beta.textContent = "β "+ values.beta_winkel.toFixed(rundungszahl);
+  ausgabe_gamma.textContent = "γ "+ values.gamma_winkel.toFixed(rundungszahl);
 
   ausgabe_bogenmaß_alpha.textContent = values.alpha_rad.toFixed(rundungszahl);
   ausgabe_bogenmaß_beta.textContent = values.beta_rad.toFixed(rundungszahl);
