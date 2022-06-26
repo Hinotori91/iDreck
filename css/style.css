@@ -5,36 +5,60 @@
   padding: 0;
   overflow-x: hidden;
   box-sizing: border-box;
+  font-family: 'Kdam Thmor Pro', sans-serif;
 }
 
 body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 3rem repeat(3);
+  grid-template-areas: 
+  "header header header"
+  "eingabe ergebnis zeichnung";
   background: rgb(208, 206, 255);
-  width: 100%;
+
+  margin: 15px;
+  padding: 15px
 }
 
 #heading {
-  width: 80rem;
+  grid-area: header;
+
+  width: 100%;
   border-radius: 10px;
   padding: 20px;
-  margin: 20px auto 10px;
+  margin-bottom: 15px;
   background:rgb(50, 50, 50);
   color: rgb(208, 206, 255);
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
   text-align: center;
 }
 
-#eingaben-ergebnis {
+#eingaben {
   display: flex;
-  margin-top: 15px;
-  justify-content: center;
+  flex-direction: column;
+  /* width: 29rem; */
+  /* width: 100%; */
+  margin-right: 15px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(50, 50, 50);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
+
+#eingabenInput {
+  margin: 0px auto 0 20px;
 }
 
 #ergebnis {
+  grid-area: ergebnis;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 3rem repeat(10, 2rem);
+  grid-template-rows: 3rem repeat(21);
 
-  width: 30rem;
+  /* width: 30rem; */
+  margin-right: 15px;
   padding: 20px;
   border-radius: 10px;
   background: rgb(50, 50, 50);
@@ -44,46 +68,11 @@ body {
 
 .angabe {
   grid-column: 1;
-  justify-items: center;
+  /* justify-items: center; */
 }
 
-#eingaben {
-  display: flex;
-  flex-direction: column;
-  width: 29rem;
-  /* width: 100%; */
-  margin-right: 15px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgb(50, 50, 50);
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
-}
-
-#wrapper {
-  height: 3rem;
-  margin-bottom: 10px;
-}
-
-#error {
-  display: flex;
-  justify-items: center;
-  background-color: rgb(255, 167, 167);
-  border-color: red;
-  color: rgb(170, 0, 0);
-  border-radius: 3px;
-  padding: 0 1em;
-  height: 100%;
-  align-items: center;
-  display: none;
-}
-
-.ausgabe{
-  /* font-family: 'Titillium Web', sans-serif; */
-  font-family: 'Kdam Thmor Pro', sans-serif;
-}
-
-#eingabenInput {
-  margin: 10px auto 0 20px;
+.rundung{
+  margin: 20px 5px 20px;
 }
 
 section {
@@ -107,17 +96,45 @@ h1 {
 }
 
 h3 {
-  margin-bottom: 10px;
-  text-align: center;
+  margin: 10px;
+  padding: 5px;
   color: rgb(208, 206, 255);
 }
 
 p {
   margin: 10px 0 0 20px;
+  /* margin: 10px; */
+}
+
+#wrapper {
+  height: 3rem;
+  margin-bottom: 10px;
+}
+
+#error {
+  display: flex;
+  justify-items: center;
+  background-color: rgb(255, 167, 167);
+  border-color: red;
+  color: rgb(170, 0, 0);
+  border-radius: 3px;
+  padding: 0 1em;
+  height: 100%;
+  align-items: center;
+  display: none;
+}
+
+#bttn{
+  width: 100px;
+  margin: auto;
 }
 
 #canvas {
+  grid-area: zeichnung;
+
+  width: 100%;
+  height: 100%;
+
   border: 3px solid rgb(50, 50, 50);
   border-radius: 10px;
-  margin-left: 15px;
 }

@@ -13,91 +13,97 @@
     <p>Ihr persönlicher Dreiecksrechner!</p>
   </div>
 
-  <div id="eingaben-ergebnis">
-    <div id="eingaben">
-      <h1>Eingaben:</h1>
-      <div id="eingabenInput">
+  <div id="eingaben">
+    <h1 class="angabe">Eingaben:</h1>
+    <div id="eingabenInput">
+      <section id="seiten">
+        <h3>Seiten</h3>
+        <label for="s-a" class="seite">
+          <p>Seite a:</p>
+          <input name="seite" id="s-a" type="number" min="0" step="1">
+        </label>
+  
+        <label for="s-b" class="seite">
+          <p>Seite b:</p>
+          <input type="number" name="seite" id="s-b" min="0" step="1">
+        </label>
+        <label for="s-c" class="seite">
+          <p>Seite c:</p>
+          <input type="number" name="seite" id="s-c" min="0" step="1">
+        </label>
+      </section>
+      <section id="winkel">
+        <h3>Winkel</h3>
+        <label for="w-a" class="winkel">
+          <p>Alpha:</p>
+          <input type="number" name="winkel" id="w-a" min="0" step="1">
+        </label>
+        <label for="w-b" class="winkel">
+          <p>Beta:</p>
+          <input type="number" name="winkel" id="w-b" min="0" step="1">
+        </label>
+  
+        <label for="w-c" class="winkel">
+          <p>Gamma:</p>
+          <input type="number" name="winkel" id="w-c" min="0" step="1">
+        </label>
+
+        <label for="rundungsfeld" >
+          <p class="rundung">Runden auf</p>
+          <input type="number" name="runden" id="rundungsfeld" class="rundung" min="0" step="1">
+          <p class="rundung">Stellen</p>
+        </label>
+
+        <input type="button" id="bttn" value="Berechnen!">
         <div id="wrapper">
           <div id="error" hidden>Bitte genau 3 Inputs und mindestens eine Seite angeben!</div>
         </div>
-        <section id="seiten">
-          <h3>Seiten</h3>
-          <label for="s-a" class="seite">Seite a:
-            <input name="seite" id="s-a" type="number" min="0" step="1">
-          </label>
-    
-          <label for="s-b" class="seite">Seite b:
-            <input type="number" name="seite" id="s-b" min="0" step="1">
-          </label>
-          <label for="s-c" class="seite">Seite c:
-            <input type="number" name="seite" id="s-c" min="0" step="1">
-          </label>
-        </section>
-        <section id="winkel">
-          <h3>Winkel</h3>
-          <label for="w-a" class="winkel">Alpha:
-            <input type="number" name="winkel" id="w-a" min="0" step="1">
-          </label>
-          <label for="w-b" class="winkel">Beta:
-            <input type="number" name="winkel" id="w-b" min="0" step="1">
-          </label>
-    
-          <label for="w-c" class="winkel">Gamma:
-            <input type="number" name="winkel" id="w-c" min="0" step="1">
-          </label>
-
-          <label for="rundungsfeld" >Runden auf ... Stellen:
-            <input type="number" name="runden" id="rundungsfeld" min="0" step="1">
-          </label>
-
-          <input type="button" id="bttn" value="GO!">
-        </section>
-      </div>
+      </section>
     </div>
-    
-    <div id="ergebnis">
-      <h1 class="angabe">Ergebnis:</h1>
-      <h3 class="angabe">Seiten:</h3>
-      <p class="angabe">Seite a</p>
-      <p id="ausgabea" class="ausgabe">-</p>
-      <p class="angabe">Seite b</p>
-      <p id="ausgabeb" class="ausgabe">-</p>
-      <p class="angabe">Seite c</p>
-      <p id="ausgabec" class="ausgabe">-</p>
-      <h3 class="angabe">Winkel:</h3>
-      <p class="angabe">Winkel Alpha</p>
-      <p id="ausgabeAlpha" class="ausgabe">-</p>
-      <p class="angabe">Winkel Beta</p>
-      <p id="ausgabeBeta" class="ausgabe">-</p>
-      <p class="angabe">Winkel Gamma</p>
-      <p id="ausgabeGamma" class="ausgabe">-</p>
-      
-      <h3 class="angabe">Bogenmaß:</h3>
-      <p class="angabe">Bogenmaß Alpha</p>
-      <p id="ausgabeBogenmaßAlpha" class="ausgabe">-</p>
-      <p class="angabe">Bogenmaß Beta</p>
-      <p id="ausgabeBogenmaßBeta" class="ausgabe">-</p>
-      <p class="angabe">Bogenmaß Gamma</p>
-      <p id="ausgabeBogenmaßGamma" class="ausgabe">-</p>
-
-      <h3 class="angabe">Berechnungen:</h3>
-      <p class="angabe">Umfang</p>
-      <p id="ausgabeUmfang" class="ausgabe">-</p>
-      <p class="angabe">Flächeninhalt</p>
-      <p id="ausgabeFläche" class="ausgabe">-</p>
-      <p class="angabe">Umkreisradius</p>
-      <p id="ausgabeUmkreisradius" class="ausgabe">-</p>
-      <p class="angabe">Inkreisradius</p>
-      <p id="ausgabeInkreisradius" class="ausgabe">-</p>
-      <p class="angabe">Seitenhalbierende a</p>
-      <p id="ausgabeSeitenhalbeA" class="ausgabe">-</p>
-      <p class="angabe">Seitenhalbierende b</p>
-      <p id="ausgabeSeitenhalbeB" class="ausgabe">-</p>
-      <p class="angabe">Seitenhalbierende c</p>
-      <p id="ausgabeSeitenhalbeC" class="ausgabe">-</p>
-    </div>
-    <canvas id="canvas"></canvas>
   </div>
+  
+  <div id="ergebnis">
+    <h1 class="angabe">Ergebnis:</h1>
+    <h3 class="angabe">Seiten:</h3>
+    <p class="angabe">Seite a</p>
+    <p id="ausgabea" class="ausgabe">-</p>
+    <p class="angabe">Seite b</p>
+    <p id="ausgabeb" class="ausgabe">-</p>
+    <p class="angabe">Seite c</p>
+    <p id="ausgabec" class="ausgabe">-</p>
+    <h3 class="angabe">Winkel:</h3>
+    <p class="angabe">Winkel Alpha</p>
+    <p id="ausgabeAlpha" class="ausgabe">-</p>
+    <p class="angabe">Winkel Beta</p>
+    <p id="ausgabeBeta" class="ausgabe">-</p>
+    <p class="angabe">Winkel Gamma</p>
+    <p id="ausgabeGamma" class="ausgabe">-</p>
+    
+    <h3 class="angabe">Bogenmaß:</h3>
+    <p class="angabe">Bogenmaß Alpha</p>
+    <p id="ausgabeBogenmaßAlpha" class="ausgabe">-</p>
+    <p class="angabe">Bogenmaß Beta</p>
+    <p id="ausgabeBogenmaßBeta" class="ausgabe">-</p>
+    <p class="angabe">Bogenmaß Gamma</p>
+    <p id="ausgabeBogenmaßGamma" class="ausgabe">-</p>
+
+    <h3 class="angabe">Berechnungen:</h3>
+    <p class="angabe">Umfang</p>
+    <p id="ausgabeUmfang" class="ausgabe">-</p>
+    <p class="angabe">Flächeninhalt</p>
+    <p id="ausgabeFläche" class="ausgabe">-</p>
+    <p class="angabe">Umkreisradius</p>
+    <p id="ausgabeUmkreisradius" class="ausgabe">-</p>
+    <p class="angabe">Inkreisradius</p>
+    <p id="ausgabeInkreisradius" class="ausgabe">-</p>
+    <p class="angabe">Seitenhalbierende a</p>
+    <p id="ausgabeSeitenhalbeA" class="ausgabe">-</p>
+    <p class="angabe">Seitenhalbierende b</p>
+    <p id="ausgabeSeitenhalbeB" class="ausgabe">-</p>
+    <p class="angabe">Seitenhalbierende c</p>
+    <p id="ausgabeSeitenhalbeC" class="ausgabe">-</p>
+  </div>
+  <canvas id="canvas"></canvas>
 
 </body>
 <!-- <script src="js/jsstyle.js"></script> -->
