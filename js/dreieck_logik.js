@@ -1,4 +1,5 @@
 import * as calc from './calculator.js';
+import * as draw from './dreieck.js';
 ///////////////////////////////////////////////////////////
 let seiten_all = document.querySelectorAll(".seite")
 let seite_a = document.querySelector("#s-a");
@@ -52,7 +53,6 @@ button.addEventListener('click', ()=>{
     console.debug('inputs were valid');
     hide_error_message();
     fill_inputs();
-
     calc.umfang(values);
     calc.flächeninhalt(values);
     calc.umkreisradius(values);
@@ -65,6 +65,8 @@ button.addEventListener('click', ()=>{
     console.debug('inputs invalid');
     show_error_message();
   }
+  // Dreieck Zeichnen von dreieck.js
+  draw.draw(values);
 });
 
 //Funktionen

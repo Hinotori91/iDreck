@@ -86,26 +86,49 @@ arc() zeichnet einen Kreisbogen.
 
 */
 
-let seite_a = document.querySelector("#s-a").value;
-let seite_b = document.querySelector("#s-b").value;
-let seite_c = document.querySelector("#s-c").value;
+export function draw(v) {
+    let blah = Math.sqrt(Math.pow(v.hoehe_C,2)+Math.pow(v.a,2));
+    //// Koordinaten = [x,y];
+    // let punkt_A = [0,0];
+    // let punkt_B = [v.c,0];
+    // let punkt_C = [blah,v.hc];
 
-function draw() {
-  var canva = document.getElementById('canvas-dreieck');
-  var ctx = canva.getContext('2d');
+    let punkt_A_x = 150;
+    let punkt_A_y = 150;
+    let punkt_B_x = v.c;
+    let punkt_B_y = 150;
+    let punkt_C_x = blah;
+    let punkt_C_y = v.hoehe_C;
 
-  // Eckpunkte berechnen lassen!
-  // moveto 150, 150 ist die mitte des Canvas
-  // man kann von 150 + die strecke (zb c) rechnen ... ende der strecke ist dann mein neuer Koordinaten-Punkt der ausgelesen gehört und von dem die nächste strecke weiter gehen wird/Soll!
-  ctx.beginPath();
-  ctx.moveTo(150, 150);
-  ctx.lineTo(190, 190);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(190, 190);
-  ctx.lineTo(240, -240);
-  ctx.stroke();
+    console.debug("Draw");
+    console.log(v.c);
+    console.log(v.hoehe_C);
+    console.log(blah);
+    var canva = document.getElementById('canvas-dreieck');
+    var ctx = canva.getContext('2d');
+
+    // Eckpunkte berechnen lassen!
+    // moveto 150, 150 ist die mitte des Canvas
+    // man kann von 150 + die strecke (zb c) rechnen ... ende der strecke ist dann mein neuer Koordinaten-Punkt der ausgelesen gehört und von dem die nächste strecke weiter gehen wird/Soll!
+
+
+    // Breite des Dreiecks definieren
+        // für proportionales anpassen an Canvas
+
+
+
+    // ctx.beginPath();
+    // ctx.moveTo(150,150);
+    // ctx.lineTo(120, 150);
+    // ctx.lineTo(131,85);
+    // ctx.closePath();
+    // ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.moveTo(punkt_A_x, punkt_A_y);
+    ctx.lineTo(punkt_B_x, punkt_B_y);
+    ctx.lineTo(punkt_C_x, punkt_C_y);
+    ctx.closePath();
+    ctx.stroke();
 }
-
-
-draw();
