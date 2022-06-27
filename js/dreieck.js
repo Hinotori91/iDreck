@@ -72,7 +72,6 @@ Umkreisradius: r = a • b • c / 4 • A
 
 
 
-
 beginPath()
     Erstellt einen Pfad und beendet ggf. einen älteren.
 closePath()
@@ -114,8 +113,6 @@ export function draw(v) {
 
     // Breite des Dreiecks definieren
         // für proportionales anpassen an Canvas
-
-
 
     // ctx.beginPath();
     // ctx.moveTo(150,150);
