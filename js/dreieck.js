@@ -86,30 +86,26 @@ arc() zeichnet einen Kreisbogen.
 
 */
 
-a = 50;
-b = 20;
-c = 100;
+let seite_a = document.querySelector("#s-a").value;
+let seite_b = document.querySelector("#s-b").value;
+let seite_c = document.querySelector("#s-c").value;
 
 function draw() {
-  var canvas = document.getElementById('canvas');
-  if (canvas.getContext) {
-    var ctx = canvas.getContext('2d');
+  var canva = document.getElementById('canvas-dreieck');
+  var ctx = canva.getContext('2d');
 
-    // ctx.beginPath();
-    // ctx.moveTo(50, 20);
-    // ctx.lineTo(100, 75);
-    // ctx.lineTo(100, 25);
-    // ctx.lineTo(50, 20)
-    // ctx.closePath();
-    // ctx.stroke();
-
-    ctx.beginPath();
-    ctx.moveTo(50, 50);
-    ctx.lineTo(a, b);
-    ctx.lineTo(b, c);
-    ctx.closePath();
-    ctx.stroke();
-  }
+  // Eckpunkte berechnen lassen!
+  // moveto 150, 150 ist die mitte des Canvas
+  // man kann von 150 + die strecke (zb c) rechnen ... ende der strecke ist dann mein neuer Koordinaten-Punkt der ausgelesen gehört und von dem die nächste strecke weiter gehen wird/Soll!
+  ctx.beginPath();
+  ctx.moveTo(150, 150);
+  ctx.lineTo(190, 190);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(190, 190);
+  ctx.lineTo(240, -240);
+  ctx.stroke();
 }
+
 
 draw();

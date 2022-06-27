@@ -156,7 +156,7 @@ p {
   margin: auto;
 }
 
-#canvas {
+#canvas-dreieck {
   grid-area: zeichnung;
 
   width: 100%;
