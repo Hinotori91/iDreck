@@ -1,11 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Titillium+Web:wght@300&display=swap');
+@font-face {
+  font-family: Sucaba;
+  src: url(../Font/sucaba_[de.allfont.net].ttf);
+}
+@font-face {
+  font-family: FreeMono;
+  src: url(../Font/FreeMono.ttf);
+}
+@font-face {
+  font-family: Glitch;
+  src: url(../Font/Glitcher.ttf);
+}
 
 * {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   box-sizing: border-box;
-  font-family: 'Kdam Thmor Pro', sans-serif;
 }
 
 body {
@@ -18,7 +28,6 @@ body {
   background: rgb(208, 206, 255);
 
   margin: 15px;
-  padding: 15px
 }
 
 #heading {
@@ -47,17 +56,17 @@ body {
 }
 
 #eingabenInput {
-  margin: 0px auto 0 20px;
+  margin: 0px auto 0 0;
 }
 
 #ergebnis {
   grid-area: ergebnis;
 
   display: grid;
+  row-gap: 5px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 3rem repeat(21);
 
-  /* width: 30rem; */
   margin-right: 15px;
   padding: 20px;
   border-radius: 10px;
@@ -68,11 +77,23 @@ body {
 
 .angabe {
   grid-column: 1;
-  /* justify-items: center; */
+  font-family: FreeMono;
+  margin-left: 15px;
+}
+.angabeHeader {
+  grid-column: 1;
+  font-family: Glitch;
+}
+.ausgabe {
+  font-family: FreeMono;
+}
+.rundung{
+  margin: 20px 0 20px 15px;
 }
 
-.rundung{
-  margin: 20px 5px 20px;
+#rundungsfeld{
+  width: 50px;
+  padding: 0;
 }
 
 section {
@@ -93,17 +114,23 @@ input {
 h1 {
   margin-bottom: 10px;
   color: rgb(208, 206, 255);
+  
+  font-family: Sucaba;
+  font-size: 33px;
 }
 
 h3 {
-  margin: 10px;
+  margin: 10px 0 0 0;
   padding: 5px;
   color: rgb(208, 206, 255);
+  
+  font-size: 20px;
 }
 
 p {
-  margin: 10px 0 0 20px;
-  /* margin: 10px; */
+  /* margin-left: 15px; */
+  
+  font-size: 16px;
 }
 
 #wrapper {

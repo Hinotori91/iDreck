@@ -10,48 +10,49 @@
 <body>
   <div id="heading">
     <h1>iDreck</h1>
-    <p>Ihr persönlicher Dreiecksrechner!</p>
+    <!-- <p>Ihr persönlicher Dreiecksrechner!</p> -->
+    <h3 class="angabeHeader">Ihr persönlicher Dreiecksrechner!</h3>
   </div>
 
   <div id="eingaben">
-    <h1 class="angabe">Eingaben:</h1>
+    <h1 class="angabeHeader">Eingaben:</h1>
     <div id="eingabenInput">
       <section id="seiten">
-        <h3>Seiten</h3>
+        <h3 class="angabeHeader">Seiten</h3>
         <label for="s-a" class="seite">
-          <p>Seite a:</p>
+          <p class="angabe">Seite a:</p>
           <input name="seite" id="s-a" type="number" min="0" step="1">
         </label>
   
         <label for="s-b" class="seite">
-          <p>Seite b:</p>
+          <p class="angabe">Seite b:</p>
           <input type="number" name="seite" id="s-b" min="0" step="1">
         </label>
         <label for="s-c" class="seite">
-          <p>Seite c:</p>
+          <p class="angabe">Seite c:</p>
           <input type="number" name="seite" id="s-c" min="0" step="1">
         </label>
       </section>
       <section id="winkel">
-        <h3>Winkel</h3>
+        <h3 class="angabeHeader">Winkel</h3>
         <label for="w-a" class="winkel">
-          <p>Alpha:</p>
+          <p class="angabe">Alpha:</p>
           <input type="number" name="winkel" id="w-a" min="0" step="1">
         </label>
         <label for="w-b" class="winkel">
-          <p>Beta:</p>
+          <p class="angabe">Beta:</p>
           <input type="number" name="winkel" id="w-b" min="0" step="1">
         </label>
   
         <label for="w-c" class="winkel">
-          <p>Gamma:</p>
+          <p class="angabe">Gamma:</p>
           <input type="number" name="winkel" id="w-c" min="0" step="1">
         </label>
 
         <label for="rundungsfeld" >
-          <p class="rundung">Runden auf</p>
+          <p class="rundung angabe">Runden auf</p>
           <input type="number" name="runden" id="rundungsfeld" class="rundung" min="0" step="1">
-          <p class="rundung">Stellen</p>
+          <p class="rundung angabe">Stellen</p>
         </label>
 
         <input type="button" id="bttn" value="Berechnen!">
@@ -63,15 +64,15 @@
   </div>
   
   <div id="ergebnis">
-    <h1 class="angabe">Ergebnis:</h1>
-    <h3 class="angabe">Seiten:</h3>
+    <h1 class="angabeHeader">Ergebnis:</h1>
+    <h3 class="angabeHeader">Seiten:</h3>
     <p class="angabe">Seite a</p>
     <p id="ausgabea" class="ausgabe">-</p>
     <p class="angabe">Seite b</p>
     <p id="ausgabeb" class="ausgabe">-</p>
     <p class="angabe">Seite c</p>
     <p id="ausgabec" class="ausgabe">-</p>
-    <h3 class="angabe">Winkel:</h3>
+    <h3 class="angabeHeader">Winkel:</h3>
     <p class="angabe">Winkel Alpha</p>
     <p id="ausgabeAlpha" class="ausgabe">-</p>
     <p class="angabe">Winkel Beta</p>
@@ -79,7 +80,7 @@
     <p class="angabe">Winkel Gamma</p>
     <p id="ausgabeGamma" class="ausgabe">-</p>
     
-    <h3 class="angabe">Bogenmaß:</h3>
+    <h3 class="angabeHeader">Bogenmaß:</h3>
     <p class="angabe">Bogenmaß Alpha</p>
     <p id="ausgabeBogenmaßAlpha" class="ausgabe">-</p>
     <p class="angabe">Bogenmaß Beta</p>
@@ -87,7 +88,7 @@
     <p class="angabe">Bogenmaß Gamma</p>
     <p id="ausgabeBogenmaßGamma" class="ausgabe">-</p>
 
-    <h3 class="angabe">Berechnungen:</h3>
+    <h3 class="angabeHeader">Berechnungen:</h3>
     <p class="angabe">Umfang</p>
     <p id="ausgabeUmfang" class="ausgabe">-</p>
     <p class="angabe">Flächeninhalt</p>
