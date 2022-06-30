@@ -10,8 +10,6 @@ export function sss_Winkel_berechnen (v){
               - 0.5* Math.pow(v.b,2) + 0.5* Math.pow(v.c,2)) / (v.a*v.c));
   v.beta_winkel = v.beta_rad * 180 / Math.PI;
 
-  // ÜBERARBEITUNG NÖTIG!!! NICHT RICHTIG GLAUBE ICH!!!
-  // gamma_winkel = Math.acos(Math.pow(c,2)-Math.pow(b,2)-Math.pow(a,2)/-2*a*b);
   v.gamma_winkel = -v.beta_winkel-v.alpha_winkel+180;
   v.gamma_rad = v.gamma_winkel/180*Math.PI;
 }
@@ -26,6 +24,10 @@ export function sww_seite_berechnen (v){
     v.c = (v.a/Math.sin(v.alpha_rad))*Math.sin(v.gamma_rad);
   }else if(v.b && v.b !=""){
     v.a = (v.b/Math.sin(v.beta_rad)*Math.sin(v.alpha_rad));
+    v.c = (v.b/Math.sin(v.beta_rad))*Math.sin(v.gamma_rad);
+  }else if(v.c && v.c !=""){
+    v.a = (v.c/Math.sin(v.gamma_rad)*Math.sin(v.alpha_rad));
+    v.b = (v.c/Math.sin(v.gamma_rad)*Math.sin(v.beta_rad));
   }
 }
 
@@ -78,11 +80,20 @@ export function umfang (v){
 export function flächeninhalt(v){
   console.debug('flächeninhalt');
   if(v.a!=""){
-    v.flächeninhalt = v.a*Math.sin(v.beta_rad);
+    // v.flächeninhalt = v.a*Math.sin(v.beta_rad);
+      // v.flächeninhalt = v.a * v.c *Math.sin(v.beta_rad);
+    v.flächeninhalt = 1/2 * v.a * v.hoehe_A;
   }else if(v.b!=""){
-    v.flächeninhalt = v.b*Math.sin(v.alpha_rad);
-  }else if(v.a!="" && v.b!=""){
-    v.flächeninhalt = v.a*Math.sin(v.beta_rad);
+    v.flächeninhalt = 1/2 * v.b * v.hoehe_B;
+    // v.flächeninhalt = v.b*Math.sin(v.alpha_rad);
+    // v.flächeninhalt = v.b*v.hoehe_B/2;
+    // v.flächeninhalt = v.a * v.b * Math.sin(v.gamma_rad);
+  }else if(v.c!=""){
+    v.flächeninhalt = 1/2 * v.c * v.hoehe_C;
+    // }else if(v.a!="" && v.b!=""){
+    // v.flächeninhalt = v.a*Math.sin(v.beta_rad);
+    // v.flächeninhalt = v.a*v.hoehe_C/2;
+    // v.flächeninhalt = v.b * v.c * Math.sin(v.alpha_rad);
   }
 }
 
@@ -120,6 +131,11 @@ function seite_berechnen (seite1, seite2, rad){
   return Math.sqrt(Math.pow(seite1,2) + Math.pow(seite2,2) 
                   - 2*seite1*seite2 * Math.cos(rad));
 }
+
+function winkel_berechnen_SSW (seite1, seite2, rad) {
+  return Math.asin((Math.sin(rad) / seite1) * seite2);
+}
+
 function calc_rad_from_angle (winkel){
   return winkel / 180 * Math.PI;
 }

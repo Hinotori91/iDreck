@@ -54,20 +54,22 @@ button.addEventListener('click', ()=>{
   draw.clearCanvas();
   parse_inputs();
   if(inputs_are_valid()){
+
     hide_error_message();
     console.debug('inputs were valid');
+    
     if(triangle_are_valid()){
       console.debug('input triangle were valid');
       hide_error_message_triangle();
       
       fill_inputs();
       calc.umfang(values);
-      calc.flächeninhalt(values);
-      calc.umkreisradius(values);
-      calc.inkreisradius(values);
       calc.seiten_höhe_A(values);
       calc.seiten_höhe_B(values);
       calc.seiten_höhe_C(values);
+      calc.flächeninhalt(values);
+      calc.umkreisradius(values);
+      calc.inkreisradius(values);
       output_results()
     }else{
       console.debug('inputs triangle invalid');
@@ -145,6 +147,7 @@ function fill_inputs() {
     case 2:
       console.debug('switch case 2');
       calc.ssw_Seite_berechnen(values);
+      calc.sss_Winkel_berechnen(values);
       break;
     case 1:
       console.debug('switch case 1');
