@@ -135,7 +135,7 @@ p {
 
 #wrapper {
   height: 3rem;
-  margin-bottom: 10px;
+  margin-top: 30px;
 }
 
 #error {
@@ -145,7 +145,7 @@ p {
   border-color: red;
   color: rgb(170, 0, 0);
   border-radius: 3px;
-  padding: 0 1em;
+  padding: 0.8em 1em;
   height: 100%;
   align-items: center;
   display: none;
@@ -153,7 +153,7 @@ p {
 
 #bttn{
   width: 100px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 #canvas-dreieck {
