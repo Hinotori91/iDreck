@@ -151,6 +151,19 @@ p {
   display: none;
 }
 
+#error-triangle {
+  display: flex;
+  justify-items: center;
+  background-color: rgb(255, 167, 167);
+  border-color: red;
+  color: rgb(170, 0, 0);
+  border-radius: 3px;
+  padding: 0.8em 1em;
+  height: 100%;
+  align-items: center;
+  display: none;
+}
+
 #bttn{
   width: 100px;
   margin: 0 auto;

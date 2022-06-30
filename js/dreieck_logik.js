@@ -37,6 +37,7 @@ let ausgabe_Seitenhalbe_B = document.querySelector("#ausgabeSeitenhalbeB");
 let ausgabe_Seitenhalbe_C = document.querySelector("#ausgabeSeitenhalbeC");
 
 let error = document.querySelector("#error");
+let error_triangle = document.querySelector("#error-triangle");
 
 let round_number = document.querySelector("#rundungsfeld");
 
@@ -53,17 +54,25 @@ button.addEventListener('click', ()=>{
   draw.clearCanvas();
   parse_inputs();
   if(inputs_are_valid()){
-    console.debug('inputs were valid');
     hide_error_message();
-    fill_inputs();
-    calc.umfang(values);
-    calc.flächeninhalt(values);
-    calc.umkreisradius(values);
-    calc.inkreisradius(values);
-    calc.seiten_höhe_A(values);
-    calc.seiten_höhe_B(values);
-    calc.seiten_höhe_C(values);
-    output_results()
+    console.debug('inputs were valid');
+    if(triangle_are_valid()){
+      console.debug('input triangle were valid');
+      hide_error_message_triangle();
+      
+      fill_inputs();
+      calc.umfang(values);
+      calc.flächeninhalt(values);
+      calc.umkreisradius(values);
+      calc.inkreisradius(values);
+      calc.seiten_höhe_A(values);
+      calc.seiten_höhe_B(values);
+      calc.seiten_höhe_C(values);
+      output_results()
+    }else{
+      console.debug('inputs triangle invalid');
+      show_error_message_triangle();
+    }
   }else{
     console.debug('inputs invalid');
     show_error_message();
@@ -120,6 +129,13 @@ function inputs_are_valid() {
   return true;  
 }
 
+function triangle_are_valid() {
+  if(values.a + values.b < values.c) return false;
+  if(values.a + values.c < values.b) return false;
+  if(values.b + values.c < values.a) return false;
+  return true;
+}
+
 function fill_inputs() {
   switch (values.side_count) {
     case 3:
@@ -174,7 +190,17 @@ function hide_error_message () {
 
 function show_error_message () {
   document.getElementById("error").style.display="block";
-  
+  error_border.forEach(element => {
+    element.style.borderColor = "red";
+  });
+}
+
+function hide_error_message_triangle (){
+  document.getElementById("error-triangle").style.display="none";
+}
+
+function show_error_message_triangle (){
+  document.getElementById("error-triangle").style.display = "block";
   error_border.forEach(element => {
     element.style.borderColor = "red";
   });
