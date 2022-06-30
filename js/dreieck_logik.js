@@ -143,9 +143,9 @@ function output_results () {
   ausgabe_b.textContent = values.b.toFixed(rundungszahl);
   ausgabe_c.textContent = values.c.toFixed(rundungszahl);
 
-  ausgabe_alpha.textContent = "α "+ values.alpha_winkel.toFixed(rundungszahl);
-  ausgabe_beta.textContent = "β "+ values.beta_winkel.toFixed(rundungszahl);
-  ausgabe_gamma.textContent = "γ "+ values.gamma_winkel.toFixed(rundungszahl);
+  ausgabe_alpha.textContent = values.alpha_winkel.toFixed(rundungszahl);
+  ausgabe_beta.textContent = values.beta_winkel.toFixed(rundungszahl);
+  ausgabe_gamma.textContent = values.gamma_winkel.toFixed(rundungszahl);
 
   ausgabe_bogenmaß_alpha.textContent = values.alpha_rad.toFixed(rundungszahl);
   ausgabe_bogenmaß_beta.textContent = values.beta_rad.toFixed(rundungszahl);
