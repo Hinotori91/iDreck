@@ -40,6 +40,8 @@ let error = document.querySelector("#error");
 
 let round_number = document.querySelector("#rundungsfeld");
 
+let error_border = [...document.querySelectorAll(".show-error")];
+
 ///////////////////////////////////////////////////////////
 // let rundungszahl = 3;
 let values = {};
@@ -167,36 +169,7 @@ function hide_error_message () {
 
 function show_error_message () {
   document.getElementById("error").style.display="block";
+  error_border.forEach(element => {
+    element.style.borderColor = "red";
+  });
 }
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-// A=1/2a*ha
-// A=1/2b*hb
-// A=1/2c*hc
-
-// Höhe a (ha)
-// Höhe b (hb)
-// Höhe c (hc)
-
-// Umkreisradius
-// Inkreisradius
-// Seitenhalbierende a (sa)
-// Seitenhalbierende b (sb)
-// Seitenhalbierende c (sc)
-// Winkel alpha
-// Winkel beta
-// Winkel gamma
