@@ -50,6 +50,7 @@ let values = {};
 
 // Main
 button.addEventListener('click', ()=>{
+  draw.clearCanvas();
   parse_inputs();
   if(inputs_are_valid()){
     console.debug('inputs were valid');

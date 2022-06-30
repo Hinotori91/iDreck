@@ -84,6 +84,8 @@ arc() zeichnet einen Kreisbogen.
 
 
 */
+var canva = document.getElementById('canvas-dreieck');
+var ctx = canva.getContext('2d');
 
 export function draw(v) {
     let blah = Math.sqrt(Math.pow(v.hoehe_C,2)+Math.pow(v.a,2));
@@ -103,8 +105,6 @@ export function draw(v) {
     console.log(v.c);
     console.log(v.hoehe_C);
     console.log(blah);
-    var canva = document.getElementById('canvas-dreieck');
-    var ctx = canva.getContext('2d');
 
     // Eckpunkte berechnen lassen!
     // moveto 150, 150 ist die mitte des Canvas
@@ -128,4 +128,9 @@ export function draw(v) {
     ctx.lineTo(punkt_C_x, punkt_C_y);
     ctx.closePath();
     ctx.stroke();
+}
+
+export function clearCanvas (){
+    ctx.clearRect(0, 0, canva.width, canva.height);
+    ctx.restore();
 }
