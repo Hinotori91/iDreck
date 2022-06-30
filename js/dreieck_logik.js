@@ -165,10 +165,15 @@ function output_results () {
 
 function hide_error_message () {
   document.getElementById("error").style.display="none";
+  
+  error_border.forEach(element => {
+    element.style.border = "none";
+  });
 }
 
 function show_error_message () {
   document.getElementById("error").style.display="block";
+  
   error_border.forEach(element => {
     element.style.borderColor = "red";
   });
