@@ -43,7 +43,7 @@ export function sww_Winkel_berechnen (v){
     v.beta_winkel = 180 - v.alpha_winkel - v.gamma_winkel;
     v.beta_rad = calc_rad_from_angle(v.beta_winkel);
     v.alpha_rad = calc_rad_from_angle(v.alpha_winkel);
-    v.gamma_rad = calc_rad_from_angle(c.gamma_winkel);
+    v.gamma_rad = calc_rad_from_angle(v.gamma_winkel);
   }else if ((v.beta_winkel && v.beta_winkel !="") && 
             (v.gamma_winkel && v.gamma_winkel !="")){
     v.alpha_winkel = 180 - v.beta_winkel - v.gamma_winkel;
