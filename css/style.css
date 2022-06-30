@@ -26,8 +26,8 @@ body {
   "header header header"
   "eingabe ergebnis zeichnung";
   background: rgb(208, 206, 255);
-
   margin: 15px;
+  padding: 0 15px 20px;
 }
 
 #heading {
