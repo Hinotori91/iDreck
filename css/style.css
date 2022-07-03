@@ -86,6 +86,8 @@ body {
 }
 .ausgabe {
   font-family: FreeMono;
+  margin-left: auto;
+  padding-right: 40%;
 }
 .rundung{
   margin: 20px 0 20px 15px;
