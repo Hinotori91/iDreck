@@ -1,77 +1,4 @@
 /*
-U = a + b + c
-a = Seite a
-b = Seite b
-c = Seite c
-
-1. rechtwinkliges Dreieck:
-Rechtwinkliges Dreieck Formelsammlung Überblick
-
-Flächeninhalt: A = a • b : 2    
-oder A = c • hc : 2
-Umfang: U = a + b + c             
-Winkelsumme: α + β + γ = 180°
-Umkreisradius: r = c : 2           
-Inkreisradius: ρ = (a • b) : U
-
-Pythagoras:
-Hypotenuse c² = a² + b²        
-Kathete a² = c² - b²          
-Kathete b² = c² - a²
-Höhensatz: h² = p * q        
-Kathetensatz a: a² = c • p    
-Kathetensatz b: b² = c • q
-
-2. gleichschenkliges Dreieck:
-Dreiecke Formelsammlung Überblick gleichschenkliges Dreieck
-
-Flächeninhalt: A = a • ha : 2
-oder A = c • hc: 2  
-Umfang: U = 2 • a + c
-
-
-Pythagoras:  
-Hypotenuse a = √hc² + (c/2)²      
-Kathete c/2 = √a² - hc²       
-Kathete hc = √a² - (c/2)²
-
-3. gleichschenklig-rechtwinkliges Dreieck:
-gleichschenkliges-rechtwinkliges Dreieck Formelsammlung Überblick
-
-Flächeninhalt: A = c • hc : 2  
-oder Flächeninhalt: A = a² : 2  
-oder Flächeninhalt: A = c² : 4
-Umfang: U = 2 • a + c    
-oder  Umfang: U = a • (2 + √2)
-Basis c = a • √2
-Höhe hc = c : 2  
-oder Höhe hc = a • √2 : 2
-
-4. gleichseitiges Dreieck:
-Dreiecke Formelsammlung Überblick gleichseitiges Dreieck 
-
-Flächeninhalt: A = a²/4 • √3         
-Umfang: U = 3 •  a
-Höhe: ha = a/2 • √3       
-Inkreis = ha • 1/3         
-Umkreis = ha • 2/3 
-
-Pythagoras:   
-a² = ha² + (a/2)²        
-
-5. allgemeines Dreieck:
-Dreiecke Formelsammlung Überblick Allgemeines Dreieck
-
-Flächeninhalt: A = a • ha : 2      
-oder A = b • hb : 2    
-oder A = c • hc : 2
-
-Umfang: U = a + b + c
-Inkreisradius: ρ = 2 • A / U
-Umkreisradius: r = a • b • c / 4 • A
-
-
-
 beginPath()
     Erstellt einen Pfad und beendet ggf. einen älteren.
 closePath()
@@ -105,6 +32,32 @@ export function draw(v) {
     console.log(v.c);
     console.log(v.hoehe_C);
     console.log(blah);
+
+
+        ///////// SCALING /////////////////
+
+    // let punkt_A_x = 150;
+    // let punkt_A_y = 150;
+    // let punkt_B_x = v.cscale;
+    // let punkt_B_y = 150;
+    // let punkt_C_x = v.blah_scale;
+    // let punkt_C_y = v.hoehe_C_Scale;
+
+    // if(v.c > canva.width){
+
+    // }else if(v.c < canva.width){
+        
+    // }else if(v.a > canva.height){
+        
+    // }else if(v.a < canva.height){
+
+    // }
+
+    // console.log("canva.width=  "+canva.width);
+    // console.log("v.c= "+v.c);
+    // console.log("mix= "+(canva.width-v.c));
+/////////////////////////////////////////////////
+
 
     // Eckpunkte berechnen lassen!
     // moveto 150, 150 ist die mitte des Canvas
