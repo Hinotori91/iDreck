@@ -180,3 +180,63 @@ p {
   border: 3px solid rgb(50, 50, 50);
   border-radius: 10px;
 }
+
+
+/* Responsive */
+
+@media (max-width: 1080px){
+
+  body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3rem repeat(2);
+    grid-template-areas: 
+    "header header"
+    "eingabe ergebnis"
+    "zeichnung zeichnung";
+    background: rgb(208, 206, 255);
+    margin: 15px;
+    padding: 0 15px 20px;
+  }
+
+  #canvas-dreieck {
+    grid-area: zeichnung;
+  
+    width: 50%;
+  
+    border: 3px solid rgb(50, 50, 50);
+    border-radius: 10px;
+  }
+}
+
+
+@media (max-width: 480px){
+
+  body{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .angabeHeader {
+    font-size: 20px;
+  }
+
+  .ausgabe {
+    /* font-family: FreeMono; */
+    margin-left: auto;
+    padding-right: 20%;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  input{
+    width: 50%;
+  }
+
+  #eingaben, #ergebnis{
+    margin-bottom: 15px;
+    width: 100%;
+  } 
+}
