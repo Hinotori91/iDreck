@@ -187,12 +187,13 @@ function hide_error_message () {
   document.getElementById("error").style.display="none";
   
   error_border.forEach(element => {
-    element.style.border = "none";
+  element.style.border = "none";
   });
 }
 
 function show_error_message () {
   document.getElementById("error").style.display="block";
+  
   error_border.forEach(element => {
     element.style.borderColor = "red";
   });
@@ -204,6 +205,7 @@ function hide_error_message_triangle (){
 
 function show_error_message_triangle (){
   document.getElementById("error-triangle").style.display = "block";
+  
   error_border.forEach(element => {
     element.style.borderColor = "red";
   });
