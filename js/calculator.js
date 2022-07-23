@@ -55,9 +55,6 @@ export function sww_Winkel_berechnen (v){
 
 
 //// SSW - SATZ ////
-export function ssw_Winkel_berechnen (){
-}
-
 export function ssw_Seite_berechnen (v){
   console.debug('ssw_Seite_berechnen');
   console.log(v.alpha_winkel);

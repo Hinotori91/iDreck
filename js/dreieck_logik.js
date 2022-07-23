@@ -1,5 +1,6 @@
+import './calculatorTest.js';
 import * as calc from './calculator.js';
-import * as draw from './dreieck.js';
+import * as draw from './drawer.js';
 ///////////////////////////////////////////////////////////
 let seite_a = document.querySelector("#s-a");
 let seite_b = document.querySelector("#s-b");
@@ -32,10 +33,6 @@ let ausgabe_Seitenhalbe_A = document.querySelector("#ausgabeSeitenhalbeA");
 let ausgabe_Seitenhalbe_B = document.querySelector("#ausgabeSeitenhalbeB");
 let ausgabe_Seitenhalbe_C = document.querySelector("#ausgabeSeitenhalbeC");
 
-// currently unused
-let error = document.querySelector("#error");
-let error_triangle = document.querySelector("#error-triangle");
-
 let round_number = document.querySelector("#rundungsfeld");
 
 let error_border = [...document.querySelectorAll(".show-error")];
@@ -43,6 +40,7 @@ let error_border = [...document.querySelectorAll(".show-error")];
 ///////////////////////////////////////////////////////////
 // let rundungszahl = 3;
 let values = {};
+
 
 
 
