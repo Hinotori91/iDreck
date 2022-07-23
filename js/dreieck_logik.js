@@ -97,6 +97,7 @@ function parse_inputs (){
 }
 
 function parse(element, value) {
+  markValid(element)
   if (element.value != '') {
     if (!isNaN(element.value)) {
       values[value] = parseFloat(element.value);
@@ -207,9 +208,9 @@ function show_error_message_triangle (){
 }
 
 function markValid(element) {
-  element.style.border = 'none'
+  element.classList.remove('input-invalid')
 }
 
 function markInvalid(element) {
-  element.style.border = '2px solid red'
+  element.classList.add('input-invalid')
 }
