@@ -1,17 +1,13 @@
 import * as calc from './calculator.js';
 import * as draw from './dreieck.js';
 ///////////////////////////////////////////////////////////
-let seiten_all = document.querySelectorAll(".seite")
 let seite_a = document.querySelector("#s-a");
 let seite_b = document.querySelector("#s-b");
 let seite_c = document.querySelector("#s-c");
 
-let winkel_all = document.querySelectorAll(".winkel");
 let alpha1 = document.querySelector("#w-a");
 let beta1 = document.querySelector("#w-b");
 let gamma1 = document.querySelector("#w-c");
-
-let ergebnis = document.querySelector("#ergebnis");
 
 let button = document.querySelector("#bttn");
 
@@ -36,6 +32,7 @@ let ausgabe_Seitenhalbe_A = document.querySelector("#ausgabeSeitenhalbeA");
 let ausgabe_Seitenhalbe_B = document.querySelector("#ausgabeSeitenhalbeB");
 let ausgabe_Seitenhalbe_C = document.querySelector("#ausgabeSeitenhalbeC");
 
+// currently unused
 let error = document.querySelector("#error");
 let error_triangle = document.querySelector("#error-triangle");
 
@@ -53,6 +50,7 @@ let values = {};
 button.addEventListener('click', ()=>{
   draw.clearCanvas();
   parse_inputs();
+  // reset_invalid_inputs();
   if(inputs_are_valid()){
 
     hide_error_message();
@@ -90,34 +88,39 @@ function parse_inputs (){
     side_count : 0
   };
 
-  if (seite_a.value!=''){
-    values.a = parseFloat(seite_a.value);
-    values.side_count++;
-    values.value_count++;
-  }
-  if (seite_b.value!=''){
-    values.b = parseFloat(seite_b.value);
-    values.side_count++;
-    values.value_count++;
-  }
-  if (seite_c.value!=''){
-    values.c = parseFloat(seite_c.value);
-    values.side_count++;
-    values.value_count++;
-  }
+  parse(seite_a, 'a')
+  parse(seite_b, 'b')
+  parse(seite_c, 'c')
+  parse(alpha1, 'alpha_winkel')
+  parse(beta1, 'beta_winkel')
+  parse(gamma1, 'gamma_winkel')
+}
 
-  if (alpha1.value !=''){
-    values.alpha_winkel = parseFloat(alpha1.value);
-    values.value_count++;
+function parse(element, value) {
+  if (element.value != '') {
+    if (!isNaN(element.value)) {
+      values[value] = parseFloat(element.value);
+      values.side_count++;
+      values.value_count++;
+    } else {
+      markInvalid(element)
+    }
   }
-  if (beta1.value !=''){
-    values.beta_winkel = parseFloat(beta1.value);
-    values.value_count++;
+}
+
+function reset_invalid_inputs() {
+  reset('a', seite_a)
+  reset('b', seite_b)
+  reset('c', seite_c)
+  reset('alpha_winkel', alpha1)
+  reset('beta_winkel', beta1)
+  reset('gamma_winkel', gamma1)
+}
+
+function reset(value, element) {
+  if (!values[value]) {
+    element.value = ""
   }
-  if (gamma1.value !=''){
-    values.gamma_winkel = parseFloat(gamma1.value);
-    values.value_count++;
-  };
 }
 
 function inputs_are_valid() {
@@ -125,9 +128,9 @@ function inputs_are_valid() {
   if(values.side_count == 0) return false;
   if(values.side_count == 3) return true;
   if(values.side_count == 2)
-    return values.a != "" && values.b != "" && values.gamma_winkel
+    return values.a && values.b != "" && values.gamma_winkel
         || values.b != "" && values.c != "" && values.alpha_winkel
-        || values.c != "" && values.a != "" && values.beta_winkel
+        || values.c != ""  && values.a != "" && values.beta_winkel
   return true;  
 }
 
@@ -185,18 +188,10 @@ function output_results () {
 
 function hide_error_message () {
   document.getElementById("error").style.display="none";
-  
-  error_border.forEach(element => {
-  element.style.border = "none";
-  });
 }
 
 function show_error_message () {
   document.getElementById("error").style.display="block";
-  
-  error_border.forEach(element => {
-    element.style.borderColor = "red";
-  });
 }
 
 function hide_error_message_triangle (){
@@ -207,6 +202,14 @@ function show_error_message_triangle (){
   document.getElementById("error-triangle").style.display = "block";
   
   error_border.forEach(element => {
-    element.style.borderColor = "red";
+    markInvalid(element)
   });
+}
+
+function markValid(element) {
+  element.style.border = 'none'
+}
+
+function markInvalid(element) {
+  element.style.border = '2px solid red'
 }
