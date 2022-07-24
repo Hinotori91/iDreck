@@ -181,14 +181,19 @@ p {
   align-items: center;
 }
 
-#canvas-dreieck {
+#canvaswrapper {
   grid-area: zeichnung;
 
   width: 100%;
   height: 100%;
+  overflow: hidden;
 
   border: 3px solid rgb(50, 50, 50);
   border-radius: 10px;
+}
+
+#canvas-dreieck {
+  position: absolute;
 }
 
 
@@ -209,7 +214,7 @@ p {
     padding: 0 15px 20px;
   }
 
-  #canvas-dreieck {
+  #canvaswrapper {
     grid-area: zeichnung;
   
     width: 50%;
@@ -253,7 +258,7 @@ p {
     width: 100%;
   } 
 
-  #canvas-dreieck {  
+  #canvaswrapper {  
     width: 100%;
   }
 }

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">  
+  <link rel="stylesheet" href="css/style.css">
   <title>iDreck</title>
 </head>
+
 <body>
   <div id="heading">
     <h1>iDreck</h1>
@@ -17,16 +19,16 @@
   <div id="eingaben">
     <h1 class="angabeHeader">Eingaben:</h1>
     <div id="eingabenInput">
-      
+
       <!-- Seiten -->
       <section id="seiten">
         <h3 class="angabeHeader">Seiten</h3>
         <label for="s-a" class="seite">
           <p class="angabe">Seite a:</p>
           <!-- <input name="seite" id="s-a" class="show-error" type="number" min="0" step="0.1"> -->
-          <input name="seite" id="s-a" type="text" inputmode="numeric" >
+          <input name="seite" id="s-a" type="text" inputmode="numeric">
         </label>
-  
+
         <label for="s-b" class="seite">
           <p class="angabe">Seite b:</p>
           <input type="text" name="seite" id="s-b" class="show-error" inputmode="numeric">
@@ -36,7 +38,7 @@
           <input type="text" name="seite" id="s-c" class="show-error" inputmode="numeric">
         </label>
       </section>
-      
+
       <!-- Winkel -->
       <section id="winkel">
         <h3 class="angabeHeader">Winkel</h3>
@@ -48,39 +50,39 @@
           <p class="angabe">Beta:</p>
           <input type="text" name="winkel" id="w-b" class="show-error" inputmode="numeric">
         </label>
-  
+
         <label for="w-c" class="winkel">
           <p class="angabe">Gamma:</p>
           <input type="text" name="winkel" id="w-c" class="show-error" inputmode="numeric">
         </label>
 
-        <label for="rundungsfeld" >
+        <label for="rundungsfeld">
           <p class="rundung angabe">Runden auf</p>
           <input type="number" name="runden" id="rundungsfeld" class="rundung" min="0" step="1" value="2">
           <p class="rundung angabe">Stellen</p>
         </label>
-      </div>
-      
+    </div>
 
-      <!-- Buttons -->
-      <!-- For running tests. hide by setting hidden to true -->
-      <div class="button-bar" >
-        <input type="button" id="testbttn" value="start tests">
-        <input type="button" id="bttn" value="Berechnen!">
+
+    <!-- Buttons -->
+    <!-- For running tests. hide by setting hidden to true -->
+    <div class="button-bar">
+      <input type="button" id="testbttn" value="start tests" hidden="true">
+      <input type="button" id="bttn" value="Berechnen!">
+    </div>
+
+    <!-- Errors -->
+    <div id="wrapper">
+      <div id="error" hidden>
+        <p>Bitte genau 3 Inputs und mindestens eine Seite angeben!</p>
       </div>
-       
-      <!-- Errors -->
-      <div id="wrapper">
-        <div id="error" hidden>
-          <p>Bitte genau 3 Inputs und mindestens eine Seite angeben!</p>
-        </div>
-        <div id="error-triangle" hidden>
-          <p>Mit diesen Angaben lässt sich leider kein Dreieck berechnen!</p>
-        </div>
+      <div id="error-triangle" hidden>
+        <p>Mit diesen Angaben lässt sich leider kein Dreieck berechnen!</p>
+      </div>
       </section>
     </div>
   </div>
-  
+
   <div id="ergebnis">
     <h1 class="angabeHeader">Ergebnis:</h1>
     <h3 class="angabeHeader">Seiten:</h3>
@@ -97,7 +99,7 @@
     <p id="ausgabeBeta" class="ausgabe">-</p>
     <p class="angabe">Winkel Gamma (γ)</p>
     <p id="ausgabeGamma" class="ausgabe">-</p>
-    
+
     <h3 class="angabeHeader">Bogenmass:</h3>
     <p class="angabe">Bogenmass Alpha</p>
     <p id="ausgabeBogenmaßAlpha" class="ausgabe">-</p>
@@ -122,8 +124,12 @@
     <p class="angabe">Seitenhöhe c</p>
     <p id="ausgabeSeitenhalbeC" class="ausgabe">-</p>
   </div>
-  <canvas width="300" height="300" id="canvas-dreieck"></canvas>
+
+  <div id="canvaswrapper">
+    <canvas id="canvas-dreieck">The rendered triangle</canvas>
+  </div>
 
 </body>
 <script type="module" src="js/dreieck_logik.js"></script>
+
 </html>

@@ -1,3 +1,77 @@
+import { kathete } from './calculator.js';
+
+let canvasWrapper = document.getElementById('canvaswrapper');
+var canvas = document.getElementById('canvas-dreieck');
+var ctx = canvas.getContext('2d');
+
+new ResizeObserver(resizeCanvas).observe(canvasWrapper);
+
+let coordinates = {};
+let scaledCoordinates = {};
+let canvasWidth;
+let canvasHeight;
+
+
+function resizeCanvas() {
+  console.debug("resizing");
+  canvasWidth = canvasWrapper.clientWidth;
+  canvasHeight = canvasWrapper.clientHeight;
+
+  canvas.setAttribute('width', canvasWidth);
+  canvas.setAttribute('height', canvasHeight);
+
+  clearCanvas();
+
+  if (coordinates.a) {
+    fitToCanvas();
+    drawTriangle();
+  }
+}
+
+export function draw(v) {
+  calculateCoordinates(v);
+  fitToCanvas();
+  drawTriangle();
+}
+
+
+function calculateCoordinates(v) {
+  let c_x = kathete(v.a, v.hoehe_C);
+
+  coordinates.a = { x: v.c, y: 0 };
+  coordinates.b = { x: 0, y: 0 };
+  coordinates.c = { x: c_x, y: v.hoehe_C };
+}
+
+function fitToCanvas() {
+  let ratio = calculateScalingRatio();
+
+  scaledCoordinates.a = { x: coordinates.a.x / ratio, y: 0 };
+  scaledCoordinates.b = { x: 0, y: 0 };
+  scaledCoordinates.c = { x: coordinates.c.x / ratio, y: coordinates.c.y / ratio };
+
+  let triangleHeight = scaledCoordinates.c.y;
+  let hShift = (canvasWidth - scaledCoordinates.a.x) / 2;
+  let vShift = (canvasHeight - scaledCoordinates.c.y) / 2;
+
+  scaledCoordinates.a.y = scaledCoordinates.a.y + triangleHeight;
+  scaledCoordinates.b.y = scaledCoordinates.b.y + triangleHeight;
+  scaledCoordinates.c.y = scaledCoordinates.c.y - triangleHeight;
+
+
+  scaledCoordinates.a = { x: scaledCoordinates.a.x + hShift, y: scaledCoordinates.a.y + vShift };
+  scaledCoordinates.b = { x: scaledCoordinates.b.x + hShift, y: scaledCoordinates.b.y + vShift };
+  scaledCoordinates.c = { x: scaledCoordinates.c.x + hShift, y: scaledCoordinates.c.y + vShift };
+
+}
+
+function calculateScalingRatio() {
+  let hRatio = coordinates.a.x / (canvasWidth - 50);
+  let vRatio = coordinates.c.y / (canvasHeight - 50);
+
+  return hRatio > vRatio ? hRatio : vRatio;
+}
+
 /*
 beginPath()
     Erstellt einen Pfad und beendet ggf. einen älteren.
@@ -8,82 +82,24 @@ stroke()
 fill()
     Zeichnet die Füllung des Pfades. 
 arc() zeichnet einen Kreisbogen.
-
-
 */
-var canva = document.getElementById('canvas-dreieck');
-var ctx = canva.getContext('2d');
+function drawTriangle() {
+  ctx.lineWidth = 3;
+  ctx.lineJoin = "round";
+  ctx.beginPath();
+  ctx.moveTo(scaledCoordinates.a.x, scaledCoordinates.a.y);
+  ctx.lineTo(scaledCoordinates.b.x, scaledCoordinates.b.y);
+  ctx.lineTo(scaledCoordinates.c.x, scaledCoordinates.c.y);
+  ctx.closePath();
+  ctx.stroke();
 
-export function draw(v) {
-    let blah = Math.sqrt(Math.pow(v.hoehe_C,2)+Math.pow(v.a,2));
-    //// Koordinaten = [x,y];
-    // let punkt_A = [0,0];
-    // let punkt_B = [v.c,0];
-    // let punkt_C = [blah,v.hc];
-
-    let punkt_A_x = 150;
-    let punkt_A_y = 150;
-    let punkt_B_x = v.c;
-    let punkt_B_y = 150;
-    let punkt_C_x = blah;
-    let punkt_C_y = v.hoehe_C;
-
-    console.debug("Draw");
-    console.log(v.c);
-    console.log(v.hoehe_C);
-    console.log(blah);
-
-
-        ///////// SCALING /////////////////
-
-    // let punkt_A_x = 150;
-    // let punkt_A_y = 150;
-    // let punkt_B_x = v.cscale;
-    // let punkt_B_y = 150;
-    // let punkt_C_x = v.blah_scale;
-    // let punkt_C_y = v.hoehe_C_Scale;
-
-    // if(v.c > canva.width){
-
-    // }else if(v.c < canva.width){
-        
-    // }else if(v.a > canva.height){
-        
-    // }else if(v.a < canva.height){
-
-    // }
-
-    // console.log("canva.width=  "+canva.width);
-    // console.log("v.c= "+v.c);
-    // console.log("mix= "+(canva.width-v.c));
-/////////////////////////////////////////////////
-
-
-    // Eckpunkte berechnen lassen!
-    // moveto 150, 150 ist die mitte des Canvas
-    // man kann von 150 + die strecke (zb c) rechnen ... ende der strecke ist dann mein neuer Koordinaten-Punkt der ausgelesen gehört und von dem die nächste strecke weiter gehen wird/Soll!
-
-
-    // Breite des Dreiecks definieren
-        // für proportionales anpassen an Canvas
-
-    // ctx.beginPath();
-    // ctx.moveTo(150,150);
-    // ctx.lineTo(120, 150);
-    // ctx.lineTo(131,85);
-    // ctx.closePath();
-    // ctx.stroke();
-
-
-    ctx.beginPath();
-    ctx.moveTo(punkt_A_x, punkt_A_y);
-    ctx.lineTo(punkt_B_x, punkt_B_y);
-    ctx.lineTo(punkt_C_x, punkt_C_y);
-    ctx.closePath();
-    ctx.stroke();
+  ctx.font = "20px sans-serif";
+  ctx.fillText("A", scaledCoordinates.a.x - 7, scaledCoordinates.a.y + 20);
+  ctx.fillText("B", scaledCoordinates.b.x - 7, scaledCoordinates.b.y + 20);
+  ctx.fillText("C", scaledCoordinates.c.x - 7, scaledCoordinates.c.y - 10);
 }
 
-export function clearCanvas (){
-    ctx.clearRect(0, 0, canva.width, canva.height);
-    ctx.restore();
+export function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.restore();
 }

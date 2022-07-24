@@ -45,19 +45,19 @@ let values = {};
 
 
 // Main
-button.addEventListener('click', ()=>{
+button.addEventListener('click', () => {
   draw.clearCanvas();
   parse_inputs();
-  // reset_invalid_inputs();
-  if(inputs_are_valid()){
+
+  if (inputs_are_valid()) {
 
     hide_error_message();
     console.debug('inputs were valid');
-    
-    if(triangle_are_valid()){
+
+    if (triangle_are_valid()) {
       console.debug('input triangle were valid');
       hide_error_message_triangle();
-      
+
       fill_inputs();
       calc.umfang(values);
       calc.seiten_höhe_A(values);
@@ -66,77 +66,91 @@ button.addEventListener('click', ()=>{
       calc.flächeninhalt(values);
       calc.umkreisradius(values);
       calc.inkreisradius(values);
-      output_results()
-    }else{
+      output_results();
+
+      // Dreieck Zeichnen von dreieck.js
+      draw.draw(values);
+
+    } else {
       console.debug('inputs triangle invalid');
       show_error_message_triangle();
     }
-  }else{
+  } else {
     console.debug('inputs invalid');
     show_error_message();
   }
-  // Dreieck Zeichnen von dreieck.js
-  draw.draw(values);
 });
 
 //Funktionen
-function parse_inputs (){
+function parse_inputs() {
   values = {
-    value_count : 0,
-    side_count : 0
+    value_count: 0,
+    side_count: 0
   };
 
-  parse(seite_a, 'a')
-  parse(seite_b, 'b')
-  parse(seite_c, 'c')
-  parse(alpha1, 'alpha_winkel')
-  parse(beta1, 'beta_winkel')
-  parse(gamma1, 'gamma_winkel')
+  parseSide(seite_a, 'a');
+  parseSide(seite_b, 'b');
+  parseSide(seite_c, 'c');
+  parseAngle(alpha1, 'alpha_winkel');
+  parseAngle(beta1, 'beta_winkel');
+  parseAngle(gamma1, 'gamma_winkel');
 }
 
-function parse(element, value) {
-  markValid(element)
+function parseSide(element, value) {
+  markValid(element);
   if (element.value != '') {
     if (!isNaN(element.value)) {
       values[value] = parseFloat(element.value);
       values.side_count++;
       values.value_count++;
     } else {
-      markInvalid(element)
+      markInvalid(element);
+    }
+  }
+}
+
+function parseAngle(element, value) {
+  markValid(element);
+  if (element.value != '') {
+    if (!isNaN(element.value)) {
+      values[value] = parseFloat(element.value);
+      values.value_count++;
+    } else {
+      markInvalid(element);
     }
   }
 }
 
 function reset_invalid_inputs() {
-  reset('a', seite_a)
-  reset('b', seite_b)
-  reset('c', seite_c)
-  reset('alpha_winkel', alpha1)
-  reset('beta_winkel', beta1)
-  reset('gamma_winkel', gamma1)
+  reset('a', seite_a);
+  reset('b', seite_b);
+  reset('c', seite_c);
+  reset('alpha_winkel', alpha1);
+  reset('beta_winkel', beta1);
+  reset('gamma_winkel', gamma1);
 }
 
 function reset(value, element) {
   if (!values[value]) {
-    element.value = ""
+    element.value = "";
   }
 }
 
 function inputs_are_valid() {
-  if(values.value_count != 3) return false;
-  if(values.side_count == 0) return false;
-  if(values.side_count == 3) return true;
-  if(values.side_count == 2)
-    return values.a && values.b != "" && values.gamma_winkel
-        || values.b != "" && values.c != "" && values.alpha_winkel
-        || values.c != ""  && values.a != "" && values.beta_winkel
-  return true;  
+  if (values.value_count != 3) return false;
+  if (values.side_count == 0) return false;
+  if (values.side_count == 3) return true;
+  if (values.side_count == 2)
+    return values.a && values.b && values.gamma_winkel
+      || values.b && values.c && values.alpha_winkel
+      || values.c && values.a && values.beta_winkel;
+  return true;
 }
 
 function triangle_are_valid() {
-  if(values.a + values.b < values.c) return false;
-  if(values.a + values.c < values.b) return false;
-  if(values.b + values.c < values.a) return false;
+  if (values.a + values.b < values.c) return false;
+  if (values.a + values.c < values.b) return false;
+  if (values.b + values.c < values.a) return false;
   return true;
 }
 
@@ -159,9 +173,7 @@ function fill_inputs() {
   }
 }
 
-
-
-function output_results () {
+function output_results() {
   let rundungszahl = round_number.value;
   ausgabe_a.textContent = values.a.toFixed(rundungszahl);
   ausgabe_b.textContent = values.b.toFixed(rundungszahl);
@@ -185,30 +197,30 @@ function output_results () {
   ausgabe_Seitenhalbe_C.textContent = values.hoehe_C.toFixed(rundungszahl);
 }
 
-function hide_error_message () {
-  document.getElementById("error").style.display="none";
+function hide_error_message() {
+  document.getElementById("error").style.display = "none";
 }
 
-function show_error_message () {
-  document.getElementById("error").style.display="block";
+function show_error_message() {
+  document.getElementById("error").style.display = "block";
 }
 
-function hide_error_message_triangle (){
-  document.getElementById("error-triangle").style.display="none";
+function hide_error_message_triangle() {
+  document.getElementById("error-triangle").style.display = "none";
 }
 
-function show_error_message_triangle (){
+function show_error_message_triangle() {
   document.getElementById("error-triangle").style.display = "block";
-  
+
   error_border.forEach(element => {
-    markInvalid(element)
+    markInvalid(element);
   });
 }
 
 function markValid(element) {
-  element.classList.remove('input-invalid')
+  element.classList.remove('input-invalid');
 }
 
 function markInvalid(element) {
-  element.classList.add('input-invalid')
+  element.classList.add('input-invalid');
 }
