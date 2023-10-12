@@ -2,6 +2,11 @@
 
 > Currently my calculator is only available in german.
 
+With this triangle calculator it is possible to calculate the Side-Side-Angle-Set (SSW), the Side-Side-Side-Set (SSS) and the Side-Angle-Angle-Set (SWW).
+
+With the specification of the respective sets, the other sides with their angles are calculated. Likewise, the radian measure of all angles, as well as the perimeter, the area, the circumcircle radius, the incircle radius and all side heights are calculated.
+
+In addition, the triangle is also drawn and the corners are labeled.
 
 ### includes calculating:
 * side-side-angle method
